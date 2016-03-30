@@ -76,7 +76,7 @@ case class MuiTextField(
   def apply(children: ReactNode*) = {
     val props = JSMacro[MuiTextField](this)
     val f = React.asInstanceOf[js.Dynamic].createFactory(Mui.TextField)
-    React.createElement(Mui.Badge, props, children: _*)
+    React.createElement(Mui.TextField, props, children: _*)
   }
 }
 
