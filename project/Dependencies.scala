@@ -4,7 +4,7 @@ import sbt._
 
 object Dependencies {
 
-    val scalaAsyncVersion = "0.9.2"
+  val scalaAsyncVersion = "0.9.2"
 
   val upickleVersion = "0.3.1"
 
@@ -25,7 +25,7 @@ object Dependencies {
 
   val universalModuleDeps = Seq(
     sriUniversal
-    )
+  )
 
   val webModuleDeps = Seq(
     sriWeb
@@ -34,5 +34,5 @@ object Dependencies {
   val mobileModuleDeps = Seq(
     sriMobile
   )
-  
+
 }

@@ -8,7 +8,7 @@ import sri.universal.styles.UniversalStyleSheet
 import scala.scalajs.js.{UndefOr => U, undefined}
 
 
-object Spinner {
+object SriSpinner {
 
   val Component = (props: Props) => {
     if (isIOSPlatform) ActivityIndicatorIOS(animating = true,

@@ -9,7 +9,7 @@ import scala.scalajs.js
 import scala.scalajs.js.{UndefOr => U}
 
 
-object SegmentedControl {
+object SriSegmentedControl {
 
   object SegmentCell {
 
