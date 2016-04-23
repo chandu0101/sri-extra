@@ -4,7 +4,7 @@ package materialui
 
 import chandu0101.macros.tojs.JSMacro
 import sri.core.{React, ReactElement, ReactNode}
-import sri.web.extra.api._
+import sri.web.all._
 
 import scala.scalajs.js
 import scala.scalajs.js.`|`

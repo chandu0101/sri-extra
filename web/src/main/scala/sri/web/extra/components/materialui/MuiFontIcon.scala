@@ -2,7 +2,7 @@ package sri.web.extra.components.materialui
 
 import chandu0101.macros.tojs.JSMacro
 import sri.core.React
-import sri.web.extra.api.ReactMouseEventH
+import sri.web.all._
 
 import scala.scalajs.js
 

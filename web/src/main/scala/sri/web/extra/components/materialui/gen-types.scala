@@ -3,9 +3,10 @@ package sri.web.extra.components.materialui
 /**
  * This file is generated - submit issues instead of PR against it
  */
-    
+
 
 class Ampm_24hr(val value: String) extends AnyVal
+
 object Ampm_24hr {
   val ampm = new Ampm_24hr("ampm")
   val _24hr = new Ampm_24hr("24hr")
@@ -14,6 +15,7 @@ object Ampm_24hr {
 
 
 class BeforeAfter(val value: String) extends AnyVal
+
 object BeforeAfter {
   val before = new BeforeAfter("before")
   val after = new BeforeAfter("after")
@@ -22,6 +24,7 @@ object BeforeAfter {
 
 
 class DeterminateIndeterminate(val value: String) extends AnyVal
+
 object DeterminateIndeterminate {
   val determinate = new DeterminateIndeterminate("determinate")
   val indeterminate = new DeterminateIndeterminate("indeterminate")
@@ -30,6 +33,7 @@ object DeterminateIndeterminate {
 
 
 class DialogInline(val value: String) extends AnyVal
+
 object DialogInline {
   val dialog = new DialogInline("dialog")
   val inline = new DialogInline("inline")
@@ -38,6 +42,7 @@ object DialogInline {
 
 
 class LeftRight(val value: String) extends AnyVal
+
 object LeftRight {
   val left = new LeftRight("left")
   val right = new LeftRight("right")
@@ -46,6 +51,7 @@ object LeftRight {
 
 
 class LeftRightCenter(val value: String) extends AnyVal
+
 object LeftRightCenter {
   val left = new LeftRightCenter("left")
   val right = new LeftRightCenter("right")
@@ -55,6 +61,7 @@ object LeftRightCenter {
 
 
 class NoneFocusedKeyboard_focused(val value: String) extends AnyVal
+
 object NoneFocusedKeyboard_focused {
   val none = new NoneFocusedKeyboard_focused("none")
   val focused = new NoneFocusedKeyboard_focused("focused")
@@ -64,6 +71,7 @@ object NoneFocusedKeyboard_focused {
 
 
 class PortraitLandscape(val value: String) extends AnyVal
+
 object PortraitLandscape {
   val portrait = new PortraitLandscape("portrait")
   val landscape = new PortraitLandscape("landscape")
@@ -72,6 +80,7 @@ object PortraitLandscape {
 
 
 class ReadyLoadingHide(val value: String) extends AnyVal
+
 object ReadyLoadingHide {
   val ready = new ReadyLoadingHide("ready")
   val loading = new ReadyLoadingHide("loading")
@@ -81,6 +90,7 @@ object ReadyLoadingHide {
 
 
 class TopBottom(val value: String) extends AnyVal
+
 object TopBottom {
   val top = new TopBottom("top")
   val bottom = new TopBottom("bottom")
@@ -89,6 +99,7 @@ object TopBottom {
 
 
 class _1_2(val value: String) extends AnyVal
+
 object _1_2 {
   val _1 = new _1_2("1")
   val _2 = new _1_2("2")

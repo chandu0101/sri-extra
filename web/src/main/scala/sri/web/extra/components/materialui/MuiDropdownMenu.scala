@@ -2,7 +2,7 @@ package sri.web.extra.components.materialui
 
 import chandu0101.macros.tojs.JSMacro
 import sri.core.{React, ReactNode}
-import sri.web.extra.api.ReactEventI
+import sri.web.all._
 
 import scala.scalajs.js
 
@@ -43,13 +43,7 @@ case class MuiDropDownMenu(
                             /* Overrides the inline-styles of the underline.*/
                             underlineStyle: js.UndefOr[js.Any] = js.undefined,
                             /* The value that is currently selected.*/
-                            value: js.UndefOr[js.Any] = js.undefined,
-                            /* Two-way binding link.*/
-                            @deprecated("It\'s deprecated by React too.")
-                            valueLink: js.UndefOr[js.Any] = js.undefined,
-                            /* `DropDownMenu` will use this member as the value representing an item.*/
-                            @deprecated("Instead, use composability.")
-                            valueMember: js.UndefOr[String] = js.undefined) {
+                            value: js.UndefOr[js.Any] = js.undefined) {
   /**
    * @param children The `MenuItem`s to populate the `Menu` with. If the `MenuItems` have the
 prop `label` that value will be used to render the representation of that

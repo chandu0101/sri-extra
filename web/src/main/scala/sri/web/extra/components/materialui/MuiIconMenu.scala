@@ -2,7 +2,7 @@ package sri.web.extra.components.materialui
 
 import chandu0101.macros.tojs.JSMacro
 import sri.core.{React, ReactNode, ReactElement}
-import sri.web.extra.api.{ReactMouseEventH, ReactKeyboardEventH, ReactTouchEventH}
+import sri.web.all._
 
 import scala.scalajs.js
 

@@ -61,15 +61,5 @@ case class MuiLeftNav(
 
 @js.native
 class MuiLeftNavM extends js.Object {
-  /* Opens the component. Using this method is deprecated, use the open property and handle onChangeRequest to control the left nav.*/
-  @deprecated
-  def open(): Unit = js.native
 
-  /* Closes the component, hiding it from view. Using this method is deprecated, use the open property and handle onChangeRequest to control the left nav.*/
-  @deprecated
-  def close(): Unit = js.native
-
-  /* Toggles between the open and closed states. Using this method is deprecated, use the open property and handle onChangeRequest to control the left nav.*/
-  @deprecated
-  def toggle(): Unit = js.native
 }

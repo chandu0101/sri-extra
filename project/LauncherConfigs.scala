@@ -103,12 +103,6 @@ object LauncherConfigs {
   )
 
 
-  def addCommandAliases(m: (String, String)*) = {
-    val s = m.map(p => addCommandAlias(p._1, p._2)).reduce(_ ++ _)
-    (_: Project).settings(s: _*)
-  }
-
-
   //================================================= Desktop =================================//
 
   val fastOptDesktop = Def.taskKey[File]("Generate desktop app bundles")

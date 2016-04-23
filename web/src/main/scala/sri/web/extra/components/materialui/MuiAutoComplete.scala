@@ -49,9 +49,6 @@ case class MuiAutoComplete(
                             open: js.UndefOr[Boolean] = js.undefined,
                             /* Text being input to auto complete.*/
                             searchText: js.UndefOr[String] = js.undefined,
-                            /* If true, the item list will not be filtered and will show when the control is focused (works like a drop down list).*/
-                            @deprecated("showAllItems is deprecated, use noFilter instead")
-                            showAllItems: js.UndefOr[Boolean] = js.undefined,
                             /* Override the inline-styles of the root element.*/
                             style: js.UndefOr[js.Any] = js.undefined,
                             /* Origin for location of target.*/
@@ -59,9 +56,7 @@ case class MuiAutoComplete(
                             /* Delay for touch tap event closing of auto complete.*/
                             touchTapCloseDelay: js.UndefOr[Int] = js.undefined,
                             /* If true, will update when focus event triggers.*/
-                            triggerUpdateOnFocus: js.UndefOr[Boolean] = js.undefined,
-                            @deprecated("updateWhenFocused has been renamed to triggerUpdateOnFocus")
-                            updateWhenFocused: js.UndefOr[Boolean] = js.undefined) {
+                            triggerUpdateOnFocus: js.UndefOr[Boolean] = js.undefined) {
 
   def apply() = {
     val props = JSMacro[MuiAutoComplete](this)

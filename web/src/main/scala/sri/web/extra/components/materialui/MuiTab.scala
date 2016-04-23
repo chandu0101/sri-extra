@@ -2,7 +2,7 @@ package sri.web.extra.components.materialui
 
 import chandu0101.macros.tojs.JSMacro
 import sri.core.{React, ReactElement, ReactNode}
-import sri.web.extra.api.ReactTouchEventH
+import sri.web.all._
 
 import scala.scalajs.js
 
@@ -31,7 +31,7 @@ case class MuiTab(
                    style: js.UndefOr[js.Any] = js.undefined,
                    /* If value prop passed to Tabs component, this value prop is also required.
                  It assigns a value to the tab so that it can be selected by the Tabs.*/
-                   value: js.UndefOr[js.Any] = js.undefined,
+                   value: js.UndefOr[String] = js.undefined,
                    /* This property is overriden by the Tabs component.*/
                    width: js.UndefOr[String] = js.undefined) {
 

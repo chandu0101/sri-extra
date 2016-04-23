@@ -1,7 +1,7 @@
 package sri.web.extra.components.materialui
 
 import sri.core.ReactNode
-import sri.web.extra.api.ReactMouseEventH
+import sri.web.all._
 
 import scala.scalajs.js
 

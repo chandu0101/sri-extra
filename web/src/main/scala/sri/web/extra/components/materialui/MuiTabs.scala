@@ -2,7 +2,7 @@ package sri.web.extra.components.materialui
 
 import chandu0101.macros.tojs.JSMacro
 import sri.core.{React, ReactElement, ReactNode}
-import sri.web.extra.api.ReactEventH
+import sri.web.all._
 
 import scala.scalajs.js
 
@@ -35,7 +35,7 @@ case class MuiTabs(
                     /* Override the default tab template used to wrap the content of each tab element.*/
                     tabTemplate: js.UndefOr[js.Any] = js.undefined,
                     /* Makes Tabs controllable and selects the tab whose value prop matches this prop.*/
-                    value: js.UndefOr[js.Any] = js.undefined) {
+                    value: js.UndefOr[String] = js.undefined) {
   /**
    * @param children Should be used to pass `Tab` components.
    */
