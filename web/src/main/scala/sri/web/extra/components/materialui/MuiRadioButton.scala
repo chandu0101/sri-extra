@@ -84,7 +84,7 @@ case class MuiRadioButton(
 
   def apply() = {
     val props = JSMacro[MuiRadioButton](this)
-    React.createElement(Mui.Badge, props)
+    React.createElement(Mui.RadioButton, props)
   }
 }
         

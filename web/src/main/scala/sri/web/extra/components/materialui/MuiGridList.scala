@@ -25,6 +25,6 @@ case class MuiGridList(
    */
   def apply(children: ReactNode*) = {
     val props = JSMacro[MuiGridList](this)
-    React.createElement(Mui.Badge, props, children: _*)
+    React.createElement(Mui.GridList, props, children: _*)
   }
 }

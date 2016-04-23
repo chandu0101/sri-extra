@@ -50,6 +50,6 @@ case class MuiIconButton(
    */
   def apply(children: ReactNode*) = {
     val props = JSMacro[MuiIconButton](this)
-    React.createElement(Mui.Badge, props, children: _*)
+    React.createElement(Mui.IconButton, props, children: _*)
   }
 }

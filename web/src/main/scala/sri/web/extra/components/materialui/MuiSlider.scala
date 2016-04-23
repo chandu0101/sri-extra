@@ -53,7 +53,7 @@ case class MuiSlider(
 
   def apply() = {
     val props = JSMacro[MuiSlider](this)
-    React.createElement(Mui.Badge, props)
+    React.createElement(Mui.Slider, props)
   }
 }
         

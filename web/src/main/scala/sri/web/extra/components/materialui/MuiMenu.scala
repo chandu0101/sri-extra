@@ -71,7 +71,7 @@ case class MuiMenu(
    */
   def apply(children: ReactNode*) = {
     val props = JSMacro[MuiMenu](this)
-    React.createElement(Mui.Badge, props, children: _*)
+    React.createElement(Mui.Menu, props, children: _*)
   }
 }
 

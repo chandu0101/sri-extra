@@ -45,7 +45,7 @@ case class MuiSnackbar(
 
   def apply() = {
     val props = JSMacro[MuiSnackbar](this)
-    React.createElement(Mui.Badge, props)
+    React.createElement(Mui.Snackbar, props)
   }
 }
 
