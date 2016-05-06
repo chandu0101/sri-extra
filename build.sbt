@@ -8,7 +8,7 @@ import Dependencies._
 // ================================ Module definitions  ================================ //
 
 lazy val Sri = DefProject(".", "root")
-  .aggregate(universal, web, mobile)
+  .aggregate(universal, web, mobile,demo,macros)
   .configure(addCommandAliases(
   "wt" -> "; test:compile ; web/test",
   "tt" -> "; test:compile ; test/test",
@@ -31,6 +31,18 @@ lazy val mobile = DefProject("mobile")
   .dependsOn(universal)
   .settings(mobileModuleDeps)
   .settings(publicationSettings)
+
+lazy val demo = DefProject("demo")
+  .dependsOn(web,macros)
+  .settings(demoModuleDeps)
+  .settings(demoLauncher)
+
+lazy val macros = DefProject("macros").settings(
+  scalacOptions += "-language:experimental.macros",
+  libraryDependencies ++= Seq(
+    "org.scala-lang" % "scala-reflect" % Version.scala211,
+    "org.scala-lang" % "scala-compiler" % Version.scala211 % Provided)
+)
 
 
 // workaround http://stackoverflow.com/questions/20931217/deprecation-and-feature-warnings-for-sbt-project-definition-files

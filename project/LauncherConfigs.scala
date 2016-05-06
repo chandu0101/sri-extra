@@ -83,11 +83,11 @@ object LauncherConfigs {
 
   //=============================== Web =========================================/
 
-  val webExamplesAssets = "web-examples/assets"
+  val demoAssets = "demo/assets"
 
-  lazy val webExamplesLauncher = Seq(crossTarget in(Compile, fullOptJS) := file(webExamplesAssets),
-    crossTarget in(Compile, fastOptJS) := file(webExamplesAssets),
-    crossTarget in(Compile, packageScalaJSLauncher) := file(webExamplesAssets),
+  lazy val demoLauncher = Seq(crossTarget in(Compile, fullOptJS) := file(demoAssets),
+    crossTarget in(Compile, fastOptJS) := file(demoAssets),
+    crossTarget in(Compile, packageScalaJSLauncher) := file(demoAssets),
     artifactPath in(Compile, fastOptJS) := ((crossTarget in(Compile, fastOptJS)).value /
       ((moduleName in fastOptJS).value + "-opt.js"))
   )

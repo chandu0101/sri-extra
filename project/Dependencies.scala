@@ -9,6 +9,7 @@ object Dependencies {
     val scala211 = "2.11.8"
     val sri = "0.5.0-SNAPSHOT"
     val scalaTest = "3.0.0-M15"
+    val sriScalaCss = "2016.5.0-SNAPSHOT"
 
   }
 
@@ -22,6 +23,8 @@ object Dependencies {
 
   val sriWeb = libraryDependencies += "com.github.chandu0101.sri" %%% "web" % Version.sri
 
+  val sriScalaCss = libraryDependencies += "com.github.chandu0101.sri" %%% "scalacss" % Version.sriScalaCss
+
 
   val universalModuleDeps = Seq(
     sriUniversal
@@ -33,6 +36,10 @@ object Dependencies {
 
   val mobileModuleDeps = Seq(
     sriMobile
+  )
+
+  val demoModuleDeps = Seq(
+    sriScalaCss
   )
 
 }
