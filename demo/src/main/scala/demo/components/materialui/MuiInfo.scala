@@ -22,19 +22,19 @@ object MuiInfo {
   val component = () => {
     div()(
       h3()("Material-ui "),
-      p()("scalajs-react wrapper for ",
+      p()("Sri wrapper for ",
         RedLink("material-ui", "http://material-ui.com/#/")
       ),
       div()(
         h4()("Supported Version :"),
-        span()("0.14.4")
+        span()("0.15.0")
       ),
       div()(
         h4()("How To Use :"),
         p()("Follow the installation guide from :", RedLink("here", "https://github.com/callemall/material-ui#installation"),
           br(),
           br(),
-          "Configure material-ui context in your top level component :", RedLink("example", "https://github.com/chandu0101/scalajs-react-components/blob/master/demo/src/main/scala/demo/pages/MuiPage.scala")
+          "Sri-web-materialui-Template :", RedLink("get here", "https://github.com/chandu0101/sri-web-materialui-template")
         )
       )
     )

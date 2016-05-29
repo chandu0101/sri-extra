@@ -7,12 +7,8 @@ trait MuiColor extends js.Object
 
 @js.native
 trait MuiStyles extends js.Object {
-  val AutoPrefix: js.Dynamic = js.native
-  val Colors: MuiColors = js.native
-  val Spacing: MuiSpacings = js.native
-  val ThemeManager: ThemeManager = js.native
-  val Typography: js.Dynamic = js.native
-  val Transitions: js.Dynamic = js.native
+  val colors: MuiColors = js.native
+  def getMuiTheme(r: MuiRawTheme): MuiTheme = js.native
   val DarkRawTheme: MuiRawTheme = js.native
   val LightRawTheme: MuiRawTheme = js.native
 }
@@ -175,37 +171,5 @@ object MuiRawTheme {
 @js.native
 trait MuiTheme extends js.Object
 
-@js.native
-trait ThemeManager extends js.Object {
-  def getMuiTheme(r: MuiRawTheme): MuiTheme = js.native
 
-  def modifyRawThemeSpacing(muiTheme: MuiTheme, newSpacing: Int): MuiTheme = js.native
 
-  def modifyRawThemePalette(muiTheme: MuiTheme, newPaletteKeys: js.Dynamic): MuiTheme = js.native
-
-  def modifyRawThemeFontFamily(muiTheme: MuiTheme, newFontFamily: String): MuiTheme = js.native
-}
-
-@js.native
-trait ThemeDecorator extends js.Object {
-  def getMuiTheme(r: MuiRawTheme): MuiTheme = js.native
-
-  def modifyRawThemeSpacing(muiTheme: MuiTheme, newSpacing: Int): MuiTheme = js.native
-
-  def modifyRawThemePalette(muiTheme: MuiTheme, newPaletteKeys: js.Dynamic): MuiTheme = js.native
-
-  def modifyRawThemeFontFamily(muiTheme: MuiTheme, newFontFamily: String): MuiTheme = js.native
-}
-
-object ThemeInstaller {
-  //  def installMuiContext[P, S, B, N <: TopNode](rawThemeOpt: js.UndefOr[MuiRawTheme] = js.undefined): ReactComponentSpec[P, S, B, N] => _ =
-  //    spec => _ {
-  //      if (Mui != js.undefined && Mui.Styles != js.undefined) {
-  //        val rawTheme = rawThemeOpt getOrElse Mui.Styles.LightRawTheme
-  //        val theme = Mui.Styles.ThemeManager.getMuiTheme(rawTheme)
-  //        val t = spec.asInstanceOf[js.Dynamic]
-  //        t.updateDynamic("childContextTypes")(js.Dynamic.literal("muiTheme" -> React.asInstanceOf[js.Dynamic].PropTypes.`object`): js.Object)
-  //        t.updateDynamic("getChildContext")(((any: js.Object) => js.Dynamic.literal("muiTheme" -> theme)): js.Function)
-  //      }
-  //    }
-}

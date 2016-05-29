@@ -7,9 +7,9 @@ object Dependencies {
 
   object Version {
     val scala211 = "2.11.8"
-    val sri = "0.5.0-SNAPSHOT"
+    val sri = "0.5.0"
     val scalaTest = "3.0.0-M15"
-    val sriScalaCss = "2016.5.0-SNAPSHOT"
+    val sriScalaCss = "2016.5.0"
 
   }
 

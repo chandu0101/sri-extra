@@ -11,16 +11,16 @@ object MuiAvatarDemo {
 
   // EXAMPLE:START
 
-  import sri.extra.web.components.materialui.Mui.Styles.Colors
+  import sri.extra.web.components.materialui.Mui.Styles.colors
   import sri.extra.web.components.materialui.Mui.SvgIcons
 
   val component = () => {
     CodeExample(code, "MuiAvatar")(
-      MuiAvatar(backgroundColor = Colors.grey700, color = Colors.deepPurple200, icon = SvgIcons.ActionGrade()())(),
-      MuiAvatar(size = 120, backgroundColor = Colors.lime600)("Ø"),
+      MuiAvatar(backgroundColor = colors.grey700, color = colors.deepPurple200, icon = SvgIcons.ActionGrade()())(),
+      MuiAvatar(size = 120, backgroundColor = colors.lime600)("Ø"),
       MuiAvatar()("one"),
       MuiAvatar()("two"),
-      MuiAvatar(backgroundColor = Colors.red400)(SvgIcons.ActionFace()())
+      MuiAvatar(backgroundColor = colors.red400)(SvgIcons.ActionFace()())
     )
   }
 

@@ -3,13 +3,15 @@ package routes
 
 import demo.components.AppHeader
 import demo.screens._
+import demo.styles.GlobalStyle
 import sri.core.ReactElement
 import sri.web.router._
 import sri.web.vdom.htmltagsNoInline._
 
 import scala.scalajs.js.Dynamic.{global => g}
 import scala.scalajs.js.{UndefOr => U}
-
+import scalacss.Defaults._
+import sri.scalacss.Defaults._
 object AppRouter {
 
 
@@ -33,7 +35,7 @@ object AppRouter {
       div()(
         AppHeader(),
         super.renderScene(route),
-        div(key = "footer")(
+        div(key = "footer",className = GlobalStyle.footer)(
           hr(),
           p()("Built using sri-web")
         )

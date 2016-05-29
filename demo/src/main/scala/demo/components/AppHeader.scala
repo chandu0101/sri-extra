@@ -14,12 +14,12 @@ object AppHeader {
   val Component = () => {
     header(className = Style.headerStyle)(
       nav(className = Style.menuNav)(
-        a(className = Style.logo, href = "#")("S J R C"),
+        a(className = Style.logo, href = "#")("S R I x"),
         div()(
           a(
             target = "_blank",
             className = Style.menuItem,
-            href = "https://github.com/chandu0101/scalajs-react-components")("Github")
+            href = "https://github.com/chandu0101/sri-extra")("Github")
         )
       )
     )
@@ -30,7 +30,7 @@ object AppHeader {
     import dsl._
 
     val headerStyle = style(
-      background := "#F2706D",
+      background := "#2255B1",
       fontSize :=! "1.5em",
       padding :=! "0",
       margin :=! "0",
@@ -42,6 +42,7 @@ object AppHeader {
     val menuNav = style(
       alignItems.center,
       display.flex,
+      justifyContent.spaceBetween,
       height :=! "64px",
       lineHeight :=! "64px",
       margin :=! "0 3rem"

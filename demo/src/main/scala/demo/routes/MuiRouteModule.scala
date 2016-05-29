@@ -17,6 +17,10 @@ object MuiRouteModule extends WebRouterModuleConfig("materialui") {
 
   object AvatarPage extends WebStaticPage
 
+  object BadgePage extends WebStaticPage
+
+  object CardPage extends WebStaticPage
+
   object TabsPage extends WebStaticPage
 
   object ButtonsPage extends WebStaticPage
@@ -26,6 +30,8 @@ object MuiRouteModule extends WebRouterModuleConfig("materialui") {
   object DialogPage extends WebStaticPage
 
   object DropDownMenuPage extends WebStaticPage
+
+  object DrawerPage extends WebStaticPage
 
   object PaperPage extends WebStaticPage
 
@@ -49,7 +55,6 @@ object MuiRouteModule extends WebRouterModuleConfig("materialui") {
 
   object ToolbarPage extends WebStaticPage
 
-  object LeftNavPage extends WebStaticPage
 
   object MenuPage extends WebStaticPage
 
@@ -59,15 +64,16 @@ object MuiRouteModule extends WebRouterModuleConfig("materialui") {
 
   val menu = List(
     LeftRoute(name = "Info", page = InfoPage, component = () => MuiInfo()),
-    LeftRoute(name = "Info", page = InfoPage, component = () => MuiInfo()),
     LeftRoute(name = "AppBar", page = AppBarPage, component = () => MuiAppBarDemo()),
-//    LeftRoute(name = "AutoComplete", page = AutoCompletePage, component = () => MuiAutoCompleteDemo()),
+    LeftRoute(name = "AutoComplete", page = AutoCompletePage, component = () => MuiAutoCompleteDemo()),
     LeftRoute(name = "Avatar", page = AvatarPage, component = () => MuiAvatarDemo()),
-    LeftRoute(name = "Tabs", page = TabsPage, component = () => MuiTabsDemo()),
+    LeftRoute(name = "Badge", page = BadgePage, component = () => MuiBadgeDemo()),
+    LeftRoute(name = "Card", page = CardPage, component = () => MuiCardDemo()),
     LeftRoute(name = "Buttons", page = ButtonsPage, component = () => MuiButtonsDemo()),
     LeftRoute(name = "DatePicker", page = DatePickerPage, component = () => MuiDatePickerDemo()),
     LeftRoute(name = "Dialog", page = DialogPage, component = () => MuiDialogDemo()),
     LeftRoute(name = "DropDown Menu", page = DropDownMenuPage, component = () => MuiDropDownMenuDemo()),
+    LeftRoute(name = "Drawer", page = DrawerPage, component = () => MuiDrawerDemo()),
     LeftRoute(name = "Paper", page = PaperPage, component = () => MuiPaperDemo()),
     //    LeftRoute(name = "Popover", page = PopoverPage, component =  () => MuiPopoverDemo()),
     LeftRoute(name = "Text Field", page = TextFieldPage, component = () => MuiTextFieldDemo()),
@@ -77,12 +83,12 @@ object MuiRouteModule extends WebRouterModuleConfig("materialui") {
     LeftRoute(name = "Slider", page = SliderPage, component = () => MuiSliderDemo()),
     //    LeftRoute(name = "Svg Icons", page = SvgIconPage, component =  () => MuiSvgIconDemo()),
     LeftRoute(name = "Time Picker", page = TimePickerPage, component = () => MuiTimePickerDemo()),
+    LeftRoute(name = "Tabs", page = TabsPage, component = () => MuiTabsDemo()),
     LeftRoute(name = "Switches", page = SwitchesPage, component = () => MuiSwitchesDemo()),
     LeftRoute(name = "Toolbar", page = ToolbarPage, component = () => MuiToolbarDemo()),
-    //    LeftRoute(name = "LeftNav", page = LeftNavPage, component =  () => MuiLeftNavDemo()),
     LeftRoute(name = "Menus", page = MenuPage, component = () => MuiMenuDemo()),
-    LeftRoute(name = "List", page = MListPage, component = () => MuiListDemo())
-    //    LeftRoute(name = "Table", page = TablePage, component =  () => MuiTableDemo()
+    LeftRoute(name = "List", page = MListPage, component = () => MuiListDemo()),
+    LeftRoute(name = "Table", page = TablePage, component = () => MuiTableDemo())
   )
 
 

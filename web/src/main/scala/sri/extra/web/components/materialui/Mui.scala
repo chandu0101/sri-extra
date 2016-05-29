@@ -31,6 +31,7 @@ object Mui extends js.Object {
   val Divider: ReactClass = js.native
   val DropDownIcon: ReactClass = js.native
   val DropDownMenu: ReactClass = js.native
+  val Drawer: ReactClass = js.native
   val EnhancedButton: ReactClass = js.native
   val FlatButton: ReactClass = js.native
   val FloatingActionButton: ReactClass = js.native
@@ -40,7 +41,6 @@ object Mui extends js.Object {
   val GridTile: ReactClass = js.native
   val IconButton: ReactClass = js.native
   val IconMenu: ReactClass = js.native
-  val LeftNav: ReactClass = js.native
   val LinearProgress: ReactClass = js.native
   val List: ReactClass = js.native
   val ListDivider: ReactClass = js.native
@@ -59,6 +59,12 @@ object Mui extends js.Object {
   val Ripples: ReactClass = js.native
   val SelectField: ReactClass = js.native
   val Slider: ReactClass = js.native
+  val Stepper: ReactClass = js.native
+  val Step: ReactClass = js.native
+  val StepLabel: ReactClass = js.native
+  val StepButton: ReactClass = js.native
+  val StepContent: ReactClass = js.native
+  val Subheader: ReactClass = js.native
   val SvgIcons: MuiSvgIcons = js.native
   val Styles: MuiStyles = js.native
   val Snackbar: ReactClass = js.native

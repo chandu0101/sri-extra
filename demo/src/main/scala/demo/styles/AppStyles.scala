@@ -1,5 +1,5 @@
 package demo
-package css
+package styles
 
 import demo.components.materialui._
 import demo.components._
@@ -9,10 +9,12 @@ import sri.scalacss.Defaults._
 import scalacss.Defaults._
 import scalacss.mutable.GlobalRegistry
 
-object AppCSS {
+object AppStyles {
 
   def load() = {
-    GlobalRegistry.register(LeftNav.Style,
+    GlobalRegistry.register(
+      GlobalStyle,
+      LeftNav.Style,
       LeftNavPage.Style,
       MuiButtonsDemo.Style,
       MuiPaperDemo.Style,

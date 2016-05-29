@@ -54,6 +54,7 @@ object MuiDialogDemo {
     }
 
     def openDialog(e: ReactEventH) = {
+      println(s"dialog clicked")
       setState(state.copy(isOpen = true))
       println(s"dialog opened!")
     }

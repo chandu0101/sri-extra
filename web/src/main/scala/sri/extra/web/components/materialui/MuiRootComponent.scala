@@ -16,7 +16,7 @@ object MuiRootComponent {
     def render() = children
 
     def getChildContext() = {
-      json(muiTheme = Mui.Styles.ThemeManager.getMuiTheme(props))
+      json(muiTheme = Mui.Styles.getMuiTheme(props))
     }
   }
 

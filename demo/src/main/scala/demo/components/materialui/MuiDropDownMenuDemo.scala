@@ -25,7 +25,7 @@ object MuiDropDownMenuDemo {
   )
 
   @ScalaJSDefined
-  class Component extends ReactComponent[Unit, js.Any] {
+  class Component extends ReactComponent[Unit, String] {
     initialState(items.head._1)
 
     def render() = {
@@ -33,14 +33,14 @@ object MuiDropDownMenuDemo {
         MuiDropDownMenu(
           onChange = choose _, value = state)(
             items map {
-              case (value, text) => MuiMenuItem(value = value.asInstanceOf[js.Any], primaryText = text)()
+              case (value, text) => MuiMenuItem(value = value, primaryText = text,key = text)()
             }
           )
       )
     }
 
     def choose(e: ReactEventI, i: Int, value: js.Any) = {
-      setState(value)
+      setState(value.toString)
       println(s"idx: $i, value: $value")
     }
 

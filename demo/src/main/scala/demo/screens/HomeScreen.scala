@@ -25,19 +25,16 @@ object HomeScreen {
     val info = style(
       alignItems := "center",
       backgroundColor := "#eeeeee",
-      display := "-ms-flexbox",
-      display := "-webkit-box",
-      display := "-webkit-flex",
-      display := "flex",
+      display.flex,
       flexDirection := "column",
       fontSize := "18px",
       fontWeight := "500",
       paddingBottom := "45px",
-      paddingTop := "85px")
+      paddingTop(85.px))
 
     val infoContent = style(
       fontWeight._500,
-      fontSize := "18px")
+      fontSize(18.px))
 
     val infoLink = style(
       color := "#ff4081",
@@ -45,17 +42,14 @@ object HomeScreen {
       textDecoration := "none")
 
     val searchSection = style(
-      display := "-ms-flexbox",
-      display := "-webkit-box",
-      display := "-webkit-flex",
-      display := "flex",
-      margin := "50px",
-      marginBottom := "15px")
+      display.flex,
+      margin(50.px),
+      marginBottom(15.px))
 
     val componentsGrid = style(
-      display := "flex",
-      flexWrap := "wrap",
-      margin := "30px")
+      display.flex,
+      flexWrap.wrap,
+      margin(30.px))
 
   }
 
@@ -70,15 +64,15 @@ object HomeScreen {
       div()(
         div(className = Style.info, key = "info")(
           h3(className = Style.infoContent)("Reusable ",
-            a(href = "https://github.com/japgolly/scalajs-react", className = Style.infoLink, target = "_blank")("scalajs-react"),
-            " Components, want to Contribute ? ")
+            a(href = "https://github.com/chandu0101/sri", className = Style.infoLink, target = "_blank")("Sri"),
+            " Components. ")
         ),
         div(className = Style.searchSection)(
           //          ReactSearchBox(onTextChange = onTextChange),
           !state.filterText.isEmpty ?= strong()(s"Results: ${state.results.length}")
         ),
         div(className = Style.componentsGrid)(
-          state.results.map(c => ComponentGridItem(c.name, c.route, c.imagePath))
+          state.results.map(c => ComponentGridItem(c.name, c.route, c.imagePath,key = c.name))
         )
       )
     }

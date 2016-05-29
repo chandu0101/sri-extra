@@ -4,11 +4,10 @@ import PublicationDetails._
 import Dependencies._
 
 
-
 // ================================ Module definitions  ================================ //
 
-lazy val Sri = DefProject(".", "root")
-  .aggregate(universal, web, mobile,demo,macros)
+lazy val SriExtra = DefProject(".", "root")
+  .aggregate(universal, web, mobile, demo, macros)
   .configure(addCommandAliases(
   "wt" -> "; test:compile ; web/test",
   "tt" -> "; test:compile ; test/test",
@@ -33,9 +32,10 @@ lazy val mobile = DefProject("mobile")
   .settings(publicationSettings)
 
 lazy val demo = DefProject("demo")
-  .dependsOn(web,macros)
+  .dependsOn(web, macros)
   .settings(demoModuleDeps)
   .settings(demoLauncher)
+  .settings(preventPublication)
 
 lazy val macros = DefProject("macros").settings(
   scalacOptions += "-language:experimental.macros",

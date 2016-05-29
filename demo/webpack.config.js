@@ -7,14 +7,7 @@ module.exports = {
 
     entry: {
         index: './bundles/index.js',
-        elemental_ui: './bundles/elemental-ui.js',
-        material_ui: './bundles/material-ui.js',
-        react_tags_input: './bundles/react-tags-input.js',
-        react_select: './bundles/react-select.js',
-        react_geom_icons: './bundles/react-geom-icons.js',
-        react_infinite: './bundles/react-infinite.js',
-        react_spinner: './bundles/react-spinner.js',
-        react_slick: './bundles/react-slick.js'
+        material_ui: './bundles/material-ui.js'
     },
     output: {
         path: __dirname + '/assets',

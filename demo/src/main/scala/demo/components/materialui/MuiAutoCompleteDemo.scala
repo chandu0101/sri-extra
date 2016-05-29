@@ -2,7 +2,7 @@ package demo.components
 package materialui
 
 import demo.macros.GhPagesMacros
-import sri.extra.web.components.materialui.{Horizontal, Origin, Vertical}
+import sri.extra.web.components.materialui._
 import sri.web.vdom.htmltagsNoInline._
 
 import scala.scalajs.js
@@ -17,26 +17,24 @@ object MuiAutoCompleteDemo {
   val colors = js.Array("Red", "Orange", "Yellow", "Green", "Blue", "Purple", "Black", "White")
 
   val onUpdateInput =
-    (search: String, ds: js.Array[js.Any] | js.Any) => println(s"onUpdateInput: search $search")
+    (search: String, ds: js.Array[String] | js.Array[MuiAutoCompleteOption]) => println(s"onUpdateInput: search $search")
 
   val component = () => {
     CodeExample(code, "MuiAutoComplete")(
       div()(
         MuiAutoComplete(
           floatingLabelText = "Type t, fuzzy search",
-          //          filter            = MuiAutoCompleteFilters.fuzzyFilter,
-          dataSource = fruit.asInstanceOf,
+          filter = MuiAutoCompleteFilters.fuzzyFilter,
+          dataSource = fruit,
           anchorOrigin = Origin(Vertical.bottom, Horizontal.middle),
-          //          onNewRequest      = onNewRequest,
           onUpdateInput = onUpdateInput
         )
       ),
       div()(
         MuiAutoComplete(
           floatingLabelText = "Type r, case insensitive",
-          //          filter            = MuiAutoCompleteFilters.caseInsensitiveFilter,
-          dataSource = colors.asInstanceOf,
-          //          onNewRequest      = onNewRequest,
+          filter = MuiAutoCompleteFilters.caseInsensitiveFilter,
+          dataSource = colors,
           onUpdateInput = onUpdateInput
         )
       )

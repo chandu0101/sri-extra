@@ -1,6 +1,7 @@
 package sri.extra.web.components.materialui
 
 import chandu0101.macros.tojs.JSMacro
+import sri.core.ReactNode
 
 import scala.scalajs.js
 
@@ -169,4 +170,40 @@ class MuiToggleM extends js.Object {
 
   /* Sets the toggle to the value of newToggledValue. This method cannot be used while "checked" is defined as a property.*/
   def setToggled(newToggledValue: Boolean): Unit = js.native
+}
+
+
+@js.native
+trait MuiAutoCompleteOption extends js.Object {
+
+  val value: ReactNode
+
+  val text: String
+
+}
+
+object MuiAutoCompleteFilters {
+
+  val caseInsensitiveFilter: (String, String) => Boolean = Mui.AutoComplete.asInstanceOf[js.Dynamic].caseInsensitiveFilter.asInstanceOf[js.Function2[String, String, Boolean]]
+
+  val fuzzyFilter: (String, String) => Boolean = Mui.AutoComplete.asInstanceOf[js.Dynamic].fuzzyFilter.asInstanceOf[js.Function2[String, String, Boolean]]
+
+}
+
+class HorizontalVeritcal(val value: String) extends AnyVal
+
+object HorizontalVeritcal {
+  val HORIZONTAL = new HorizontalVeritcal("horizontal")
+  val VERTICAL = new HorizontalVeritcal("vertical")
+}
+
+@js.native
+class TableM extends js.Object {
+  def createTableBody(base: js.Any): js.Any = js.native
+
+  def createTableFooter(base: js.Any): js.Any = js.native
+
+  def createTableHeader(base: js.Any): js.Any = js.native
+
+  def isScrollbarVisible(): js.Any = js.native
 }

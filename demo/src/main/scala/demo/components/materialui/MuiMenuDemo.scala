@@ -3,6 +3,7 @@ package components
 package materialui
 
 import demo.macros.GhPagesMacros
+import org.scalajs.dom
 import sri.core._
 import sri.extra.web.components.materialui.{Corners, MuiMenuItemProps}
 import sri.web.all._
@@ -44,8 +45,11 @@ object MuiMenuDemo {
     def toggleOpen2(e: ReactTouchEventH) =
       setState(state.copy(isOpen = !state.isOpen))
 
-    def onTouchTap(e: ReactUIEventH, elem: Any) =
-      setState(state.touched(elem.asInstanceOf[ReactElementM[MuiMenuItemProps, _]].props.value))
+    def onTouchTap(e: ReactUIEventH, elem: ReactElementM[MuiMenuItemProps, _],index : Int) =
+    {
+       dom.window.console.log(s"Item ", elem)
+      setState(state.touched(elem.props.value))
+    }
 
     def renderOpen(S: State) =
       div()(
@@ -58,7 +62,7 @@ object MuiMenuDemo {
           width = 320,
           value = S.multiple.toJSArray,
           multiple = true,
-          openDirection = Corners.bottom_right,
+          openDirection = "bottom-left",
           onItemTouchTap = onTouchTap _,
           onEscKeyDown = toggleOpen _
         )(

@@ -1,6 +1,6 @@
 package demo
 
-import demo.css.AppCSS
+import demo.styles.AppStyles
 import demo.routes.AppRouter
 import org.scalajs.dom
 import sri.web.ReactDOM
@@ -19,7 +19,7 @@ object ReactApp extends JSApp {
       dom.document.body.className.replace("pg-loading", "")
       dom.document.body.className += " pg-loaded"
     }
-    AppCSS.load()
+    AppStyles.load()
     ReactDOM.render(AppRouter.router, dom.document.getElementById("container"))
   }
 }

@@ -10,6 +10,10 @@ import scala.scalajs.js.`|`
 
 trait MuiComponents {
 
+  type RowId = Int
+
+  type ColumnId = Int | String
+
   def MuiAppBar(
                  key: js.UndefOr[String] = js.undefined,
                  ref: js.UndefOr[String] = js.undefined,
@@ -50,13 +54,6 @@ trait MuiComponents {
     React.createElement(Mui.AppBar, props, children: _*)
   }
 
-  def MuiAppCanvas(
-                    key: js.UndefOr[String] = js.undefined,
-                    ref: js.UndefOr[String] = js.undefined)(children: ReactNode*): ReactElement = {
-    val props = FunctionMacro()
-    React.createElement(Mui.AppCanvas, props, children: _*)
-
-  }
 
   def MuiAutoComplete(
                        key: js.UndefOr[String] = js.undefined,
@@ -66,7 +63,7 @@ trait MuiComponents {
                        /* Whether or not the auto complete is animated as it is toggled.*/
                        animated: js.UndefOr[Boolean] = js.undefined,
                        /* Array of strings or nodes used to populate the list.*/
-                       dataSource: js.UndefOr[js.Array[js.Any]] = js.undefined,
+                       dataSource: js.UndefOr[js.Array[String] | js.Array[MuiAutoCompleteOption]] = js.undefined,
                        /* Disables focus ripple when true.*/
                        disableFocusRipple: js.UndefOr[Boolean] = js.undefined,
                        /* Override style prop for error.*/
@@ -74,7 +71,7 @@ trait MuiComponents {
                        /* The error content to display.*/
                        errorText: js.UndefOr[String] = js.undefined,
                        /* Function used to filter the auto complete.*/
-                       filter: js.UndefOr[(String, String, js.UndefOr[js.Any]) => _] = js.undefined,
+                       filter: js.UndefOr[(String, String) => Boolean] = js.undefined,
                        /* The content to use for adding floating label element.*/
                        floatingLabelText: js.UndefOr[String] = js.undefined,
                        /* If true, the field receives the property `width: 100%`.*/
@@ -90,9 +87,9 @@ trait MuiComponents {
                        /* Override style for menu.*/
                        menuStyle: js.UndefOr[js.Any] = js.undefined,
                        /* Gets called when list item is clicked or pressed enter.*/
-                       onNewRequest: js.UndefOr[(js.Any, Int, js.Array[js.Any] | js.Any) => _] = js.undefined,
+                       onNewRequest: js.UndefOr[(String, Int) => _] = js.undefined,
                        /* Gets called each time the user updates the text field.*/
-                       onUpdateInput: js.UndefOr[(String, js.Array[js.Any] | js.Any) => _] = js.undefined,
+                       onUpdateInput: js.UndefOr[(String, js.Array[String] | js.Array[MuiAutoCompleteOption]) => _] = js.undefined,
                        /* Auto complete menu is open if true.*/
                        open: js.UndefOr[Boolean] = js.undefined,
                        /* Text being input to auto complete.*/
@@ -172,7 +169,9 @@ trait MuiComponents {
                /* Whether a click on this card component expands the card. Can be set on any child of the Card component.*/
                actAsExpander: js.UndefOr[Boolean] = js.undefined,
                /* Whether this card component is expandable. Can be set on any child of the Card component.*/
+               containerStyle: js.UndefOr[js.Any] = js.undefined,
                expandable: js.UndefOr[Boolean] = js.undefined,
+               expanded: js.UndefOr[Boolean] = js.undefined,
                /* Whether this card is initially expanded.*/
                initiallyExpanded: js.UndefOr[Boolean] = js.undefined,
                /* Fired when the expandable state changes.*/
@@ -283,10 +282,10 @@ trait MuiComponents {
                     /* Override the inline-styles of the root element.*/
                     style: js.UndefOr[js.Any] = js.undefined,
                     subtitle: js.UndefOr[ReactNode] = js.undefined,
-                    subtitleColor: js.UndefOr[MuiColor] = js.undefined,
+                    subtitleColor: js.UndefOr[String] = js.undefined,
                     subtitleStyle: js.UndefOr[js.Any] = js.undefined,
                     title: js.UndefOr[ReactNode] = js.undefined,
-                    titleColor: js.UndefOr[MuiColor] = js.undefined,
+                    titleColor: js.UndefOr[String] = js.undefined,
                     titleStyle: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
     val props = FunctionMacro()
     React.createElement(Mui.CardTitle, props, children: _*)
@@ -306,6 +305,7 @@ trait MuiComponents {
                    disabled: js.UndefOr[Boolean] = js.undefined,
                    /* Overrides the inline-styles of the icon element.*/
                    iconStyle: js.UndefOr[js.Any] = js.undefined,
+                   inputStyle: js.UndefOr[js.Any] = js.undefined,
                    /* Where the label will be placed next to the checkbox.*/
                    labelPosition: js.UndefOr[LeftRight] = js.undefined,
                    /* Overrides the inline-styles of the Checkbox element label.*/
@@ -316,7 +316,7 @@ trait MuiComponents {
                    style: js.UndefOr[js.Any] = js.undefined,
                    /* The SvgIcon to use for the unchecked state.
                  This is useful to create icon toggles.*/
-                   unCheckedIcon: js.UndefOr[ReactElement] = js.undefined,
+                   uncheckedIcon: js.UndefOr[ReactElement] = js.undefined,
                    /* ValueLink for when using controlled checkbox.*/
                    valueLink: js.UndefOr[js.Any] = js.undefined,
                    /* The css class name of the root element.
@@ -424,12 +424,14 @@ trait MuiComponents {
                    `dialog` (default) displays the DatePicker as a dialog with a modal.
                    `inline` displays the DatePicker below the input field (similar to auto complete).*/
                      container: js.UndefOr[DialogInline] = js.undefined,
+                     cancelLabel: js.UndefOr[ReactNode] = js.undefined,
                      /* This is the initial date value of the component.
                    If either `value` or `valueLink` is provided they will override this
                    prop with `value` taking precedence.*/
                      defaultDate: js.UndefOr[js.Date] = js.undefined,
                      /* Disables the year selection in the date picker.*/
                      disableYearSelection: js.UndefOr[Boolean] = js.undefined,
+                     disabled: js.UndefOr[Boolean] = js.undefined,
                      /* Used to change the first day of week. It drastically varies from
                    Saturday to Monday (could even be Friday) between different locales.
                    The allowed range is 0 (Sunday) to 6 (Saturday).*/
@@ -450,6 +452,7 @@ trait MuiComponents {
                      minDate: js.UndefOr[js.Date] = js.undefined,
                      /* Tells the component to display the picker in portrait or landscape mode.*/
                      mode: js.UndefOr[PortraitLandscape] = js.undefined,
+                     okLabel: js.UndefOr[ReactNode] = js.undefined,
                      /* _ function that is fired when the date value changes. Since there
                    is no particular event associated with the change the first argument
                    will always be null and the second argument will be the new Date instance.*/
@@ -472,18 +475,11 @@ trait MuiComponents {
                      /* Sets the date for the Date Picker programmatically.*/
                      value: js.UndefOr[js.Date] = js.undefined,
                      /* Creates a ValueLink with the value of date picker.*/
-                     valueLink: js.UndefOr[js.Any] = js.undefined,
                      /* Wordings used inside the button of the dialog.*/
-                     wordings: js.UndefOr[Wordings] = js.undefined,
-                     /* The css class name of the root element.
-                     (Passed on to TextField)*/
-                     className: js.UndefOr[String] = js.undefined,
                      /* The text string to use for the default value.
                      (Passed on to TextField)*/
-                     defaultValue: js.UndefOr[String] = js.undefined,
                      /* Disables the text field if set to true.
                      (Passed on to TextField)*/
-                     disabled: js.UndefOr[Boolean] = js.undefined,
                      /* The style object to use to override error styles.
                      (Passed on to TextField)*/
                      errorStyle: js.UndefOr[js.Any] = js.undefined,
@@ -505,16 +501,6 @@ trait MuiComponents {
                      /* The hint content to display.
                      (Passed on to TextField)*/
                      hintText: js.UndefOr[ReactNode] = js.undefined,
-                     /* The id prop for the text field.
-                     (Passed on to TextField)*/
-                     id: js.UndefOr[String] = js.undefined,
-                     /* Override the inline-styles of the TextField's input element.
-                     (Passed on to TextField)*/
-                     inputStyle: js.UndefOr[js.Any] = js.undefined,
-                     /* If true, a textarea element will be rendered.
-                   The textarea also grows and shrinks according to the number of lines.
-                     (Passed on to TextField)*/
-                     multiLine: js.UndefOr[Boolean] = js.undefined,
                      /* _ function that is fired when the textfield loses focus.
                      (Passed on to TextField)*/
                      onBlur: js.UndefOr[ReactEventI => _] = js.undefined,
@@ -523,32 +509,7 @@ trait MuiComponents {
                      onEnterKeyDown: js.UndefOr[ReactKeyboardEventI => _] = js.undefined,
                      /* _ function fired when key is pressed down.
                      (Passed on to TextField)*/
-                     onKeyDown: js.UndefOr[ReactKeyboardEventH => _] = js.undefined,
-                     /* Number of rows to display when multiLine option is set to true.
-                     (Passed on to TextField)*/
-                     rows: js.UndefOr[Int] = js.undefined,
-                     /* Maximum number of rows to display when
-                   multiLine option is set to true.
-                     (Passed on to TextField)*/
-                     rowsMax: js.UndefOr[Int] = js.undefined,
-                     /* Specifies the type of input to display
-                   such as "password" or "text".
-                     (Passed on to TextField)*/
-                     `type`: js.UndefOr[String] = js.undefined,
-                     /* Override the inline-styles of the
-                   TextField's underline element when disabled.
-                     (Passed on to TextField)*/
-                     underlineDisabledStyle: js.UndefOr[js.Any] = js.undefined,
-                     /* Override the inline-styles of the TextField's
-                   underline element when focussed.
-                     (Passed on to TextField)*/
-                     underlineFocusStyle: js.UndefOr[js.Any] = js.undefined,
-                     /* If true, shows the underline for the text field.
-                     (Passed on to TextField)*/
-                     underlineShow: js.UndefOr[Boolean] = js.undefined,
-                     /* Override the inline-styles of the TextField's underline element.
-                     (Passed on to TextField)*/
-                     underlineStyle: js.UndefOr[js.Any] = js.undefined): ReactElement = {
+                     onKeyDown: js.UndefOr[ReactKeyboardEventH => _] = js.undefined): ReactElement = {
     val props = FunctionMacro()
     React.createElement(Mui.DatePicker, props)
   }
@@ -664,6 +625,7 @@ trait MuiComponents {
                      the name of the item on the label.*/
                        /* Overrides the styles of label when the `DropDownMenu` is inactive.*/
                        labelStyle: js.UndefOr[js.Any] = js.undefined,
+                       listStyle: js.UndefOr[js.Any] = js.undefined,
                        /* The maximum height of the `Menu` when it is displayed.*/
                        maxHeight: js.UndefOr[Int] = js.undefined,
                        /* JSON data representing all menu items in the dropdown.*/
@@ -693,6 +655,53 @@ trait MuiComponents {
       MuiDropDownMenuItem(text = obj.text.toString, payload = obj.payload.toString)
   }
 
+
+  def MuiDrawer(
+                 key: js.UndefOr[String] = js.undefined,
+                 ref: js.UndefOr[MuiLeftNavM => Unit] = js.undefined,
+                 /* The css class name of the root element.*/
+                 className: js.UndefOr[String] = js.undefined,
+                 containerClassName: js.UndefOr[String] = js.undefined,
+                 containerStyle: js.UndefOr[js.Any] = js.undefined,
+                 /* Indicates whether swiping sideways when the `LeftNav` is closed should open it.*/
+                 disableSwipeToOpen: js.UndefOr[Boolean] = js.undefined,
+                 /* Indicates that the `LeftNav` should be docked. In this state, the overlay won't
+               show and clicking on a menu item will not close the `LeftNav`.*/
+                 docked: js.UndefOr[Boolean] = js.undefined,
+                 /* A react component that will be displayed above all the menu items.
+               Usually, this is used for a logo or a profile image.*/
+                 /* Fired when a menu item is clicked that is not the
+               one currently selected. Note that this requires the `injectTapEventPlugin`
+               component. See the "Get Started" section for more detail.*/
+                 /* _ function that is fired when the open state of the `LeftNav` is
+               requested to be changed. The provided open argument determines whether
+               the `LeftNav` is requested to be opened or closed. Also, the reason
+               argument states why the `LeftNav` got closed or opend. It can be either
+               `'clickaway'` for menuItem and overlay clicks, `'escape'` for pressing the
+               escape key and 'swipe' for swiping. For opening the reason is always `'swipe'`.*/
+                 onRequestChange: js.UndefOr[(Boolean, String) => _] = js.undefined,
+                 /* Indicates that the `LeftNav` should be opened, closed or uncontrolled.
+               Providing a boolean will turn the `LeftNav` into a controlled component.*/
+                 open: js.UndefOr[Boolean] = js.undefined,
+                 /* Positions the `LeftNav` to open from the right side.*/
+                 openSecondary: js.UndefOr[Boolean] = js.undefined,
+                 /* The `className` to add to the `Overlay` component that is rendered behind the `LeftNav`.*/
+                 overlayClassName: js.UndefOr[String] = js.undefined,
+                 /* Overrides the inline-styles of the `Overlay` component that is rendered behind the `LeftNav`.*/
+                 overlayStyle: js.UndefOr[js.Any] = js.undefined,
+                 /* Override the inline-styles of the root element.*/
+                 style: js.UndefOr[js.Any] = js.undefined,
+                 /* The width of the left most (or right most) area in pixels where the `LeftNav` can be
+               swiped open from. Setting this to `null` spans that area to the entire page
+               (**CAUTION!** Setting this property to `null` might cause issues with sliders and
+               swipeable `Tabs`, use at your own risk).*/
+                 swipeAreaWidth: js.UndefOr[Double] = js.undefined,
+                 /* The width of the `LeftNav` in pixels. Defaults to using the values from theme.*/
+                 width: js.UndefOr[Double] = js.undefined,
+                 zDepth: js.UndefOr[Int] = js.undefined)(children: ReactNode*): ReactElement = {
+    val props = FunctionMacro()
+    React.createElement(Mui.Drawer, props, children: _*)
+  }
 
   def MuiFlatButton(
                      key: js.UndefOr[String] = js.undefined,
@@ -920,7 +929,7 @@ trait MuiComponents {
                  a navigation link (that knowsabout your routes) and you want to use it as primary tile action.
                  In case you pass a ReactComponent, please make sure that it passes all props,
                  accepts styles overrides and render it's children.*/
-                   rootClass: js.UndefOr[String | js.Any] = js.undefined,
+                   containerElement: js.UndefOr[String | js.Any] = js.undefined,
                    /* Height of the tile in number of grid cells.*/
                    rows: js.UndefOr[Int] = js.undefined,
                    /* Override the inline-styles of the root element.*/
@@ -989,14 +998,13 @@ trait MuiComponents {
                    anchorOrigin: js.UndefOr[Origin] = js.undefined,
                    /* The css class name of the root element.*/
                    className: js.UndefOr[String] = js.undefined,
-                   /* If true, menu will close after an item is touchTapped.*/
-                   closeOnItemTouchTap: js.UndefOr[Boolean] = js.undefined,
                    /* This is the IconButton to render. This button will open the menu.*/
                    iconButtonElement: ReactElement,
                    /* The style object to use to override underlying icon style.*/
                    iconStyle: js.UndefOr[js.Any] = js.undefined,
                    /* The style object to use to override underlying menu style.*/
                    menuStyle: js.UndefOr[js.Any] = js.undefined,
+                   multiple: js.UndefOr[Boolean] = js.undefined,
                    /* Fired when a menu item is touchTapped.*/
                    onItemTouchTap: js.UndefOr[(ReactTouchEventH, ReactElement) => _] = js.undefined,
                    /* Fired when keyobard focuses on element.*/
@@ -1029,55 +1037,12 @@ trait MuiComponents {
                  vertical: [top, middle, bottom]
                  horizontal: [left, center, right].*/
                    targetOrigin: js.UndefOr[Origin] = js.undefined,
+                   useLayerForClickAway: js.UndefOr[Boolean] = js.undefined,
                    /* Sets the delay in milliseconds before closing the
                  menu when an item is clicked.*/
                    touchTapCloseDelay: js.UndefOr[Int] = js.undefined)(children: ReactNode*): ReactElement = {
     val props = FunctionMacro()
     React.createElement(Mui.IconMenu, props, children: _*)
-  }
-
-  def MuiLeftNav(
-                  key: js.UndefOr[String] = js.undefined,
-                  ref: js.UndefOr[MuiLeftNavM => Unit] = js.undefined,
-                  /* The css class name of the root element.*/
-                  className: js.UndefOr[String] = js.undefined,
-                  /* Indicates whether swiping sideways when the `LeftNav` is closed should open it.*/
-                  disableSwipeToOpen: js.UndefOr[Boolean] = js.undefined,
-                  /* Indicates that the `LeftNav` should be docked. In this state, the overlay won't
-                show and clicking on a menu item will not close the `LeftNav`.*/
-                  docked: js.UndefOr[Boolean] = js.undefined,
-                  /* A react component that will be displayed above all the menu items.
-                Usually, this is used for a logo or a profile image.*/
-                  /* Fired when a menu item is clicked that is not the
-                one currently selected. Note that this requires the `injectTapEventPlugin`
-                component. See the "Get Started" section for more detail.*/
-                  /* _ function that is fired when the open state of the `LeftNav` is
-                requested to be changed. The provided open argument determines whether
-                the `LeftNav` is requested to be opened or closed. Also, the reason
-                argument states why the `LeftNav` got closed or opend. It can be either
-                `'clickaway'` for menuItem and overlay clicks, `'escape'` for pressing the
-                escape key and 'swipe' for swiping. For opening the reason is always `'swipe'`.*/
-                  onRequestChange: js.UndefOr[(Boolean, String) => _] = js.undefined,
-                  /* Indicates that the `LeftNav` should be opened, closed or uncontrolled.
-                Providing a boolean will turn the `LeftNav` into a controlled component.*/
-                  open: js.UndefOr[Boolean] = js.undefined,
-                  /* Positions the `LeftNav` to open from the right side.*/
-                  openRight: js.UndefOr[Boolean] = js.undefined,
-                  /* The `className` to add to the `Overlay` component that is rendered behind the `LeftNav`.*/
-                  overlayClassName: js.UndefOr[String] = js.undefined,
-                  /* Overrides the inline-styles of the `Overlay` component that is rendered behind the `LeftNav`.*/
-                  overlayStyle: js.UndefOr[js.Any] = js.undefined,
-                  /* Override the inline-styles of the root element.*/
-                  style: js.UndefOr[js.Any] = js.undefined,
-                  /* The width of the left most (or right most) area in pixels where the `LeftNav` can be
-                swiped open from. Setting this to `null` spans that area to the entire page
-                (**CAUTION!** Setting this property to `null` might cause issues with sliders and
-                swipeable `Tabs`, use at your own risk).*/
-                  swipeAreaWidth: js.UndefOr[Double] = js.undefined,
-                  /* The width of the `LeftNav` in pixels. Defaults to using the values from theme.*/
-                  width: js.UndefOr[Double] = js.undefined)(children: ReactNode*): ReactElement = {
-    val props = FunctionMacro()
-    React.createElement(Mui.LeftNav, props, children: _*)
   }
 
 
@@ -1105,16 +1070,8 @@ trait MuiComponents {
   def MuiList(
                key: js.UndefOr[String] = js.undefined,
                ref: js.UndefOr[String] = js.undefined,
-               /* If true, the subheader will be indented by 72px.*/
-               insetSubheader: js.UndefOr[Boolean] = js.undefined,
                /* Override the inline-styles of the root element.*/
-               style: js.UndefOr[js.Any] = js.undefined,
-               /* The subheader string that will be displayed at the top of the list.*/
-               subheader: js.UndefOr[ReactNode] = js.undefined,
-               /* The style object to override subheader styles.*/
-               subheaderStyle: js.UndefOr[js.Any] = js.undefined,
-               /* The zDepth prop passed to the Paper element inside list.*/
-               zDepth: js.UndefOr[ZDepth] = js.undefined)(children: ReactNode*): ReactElement = {
+               style: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
     val props = FunctionMacro()
     React.createElement(Mui.List, props, children: _*)
   }
@@ -1200,10 +1157,6 @@ trait MuiComponents {
   def MuiMenu(
                key: js.UndefOr[String] = js.undefined,
                ref: js.UndefOr[String] = js.undefined,
-               /* If true, the menu will apply transitions when added it
-             gets added to the DOM. In order for transitions to
-             work, wrap the menu inside a ReactTransitionGroup.*/
-               animated: js.UndefOr[Boolean] = js.undefined,
                /* If true, the width will automatically be
              set according to the items inside the menu
              using the proper keyline increment.*/
@@ -1221,15 +1174,15 @@ trait MuiComponents {
                multiple: js.UndefOr[Boolean] = js.undefined,
                /* Fired when a menu item is touchTapped and the menu item
              value is not equal to the current menu value.*/
-               onChange: js.UndefOr[(ReactEventH, String | js.Array[String]) => _] = js.undefined,
+               onChange: js.UndefOr[(ReactEventH, js.Any) => _] = js.undefined,
                /* Fired when an Esc key is keyed down.*/
                onEscKeyDown: js.UndefOr[ReactKeyboardEventH => _] = js.undefined,
                /* Fired when a menu item is touchTapped.*/
-               onItemTouchTap: js.UndefOr[(ReactUIEventH, Any) => _] = js.undefined,
+               onItemTouchTap: js.UndefOr[(ReactUIEventH, ReactElementM[MuiMenuItemProps, _], Int) => _] = js.undefined,
                /* Fired when a key is pressed.*/
                onKeyDown: js.UndefOr[ReactKeyboardEventH => _] = js.undefined,
                /* This is the placement of the menu relative to the IconButton.*/
-               openDirection: js.UndefOr[Corners] = js.undefined,
+               openDirection: js.UndefOr[String] = js.undefined,
                /* Style for the selected Menu Item.*/
                selectedMenuItemStyle: js.UndefOr[js.Any] = js.undefined,
                /* Override the inline-styles of the root element.*/
@@ -1260,8 +1213,6 @@ trait MuiComponents {
                    ref: js.UndefOr[String] = js.undefined,
                    /* If true, a left check mark will be rendered.*/
                    checked: js.UndefOr[Boolean] = js.undefined,
-                   /* Indicates if the menu should render with compact desktop styles.*/
-                   desktop: js.UndefOr[Boolean] = js.undefined,
                    /* Disables a menu item.*/
                    disabled: js.UndefOr[Boolean] = js.undefined,
                    /* Prop passed down to ListItem that tells it what kind of focus it has.*/
@@ -1415,10 +1366,10 @@ trait MuiComponents {
                   canAutoPosition: js.UndefOr[Boolean] = js.undefined,
                   /* The css class name of the root element.*/
                   className: js.UndefOr[String] = js.undefined,
-                  /* This is a callback that fires when the popover
+                  /* This is a _ that fires when the popover
                 thinks it should close. (e.g. clickAway or offScreen)
                 @param {string} reason Determines what triggered this request.*/
-                  onRequestClose: js.UndefOr[() => _] = js.undefined,
+                  onRequestClose: js.UndefOr[String => _] = js.undefined,
                   /* Controls the visibility of the popover.*/
                   open: js.UndefOr[Boolean] = js.undefined,
                   /* Override the inline-styles of the root element.*/
@@ -1450,15 +1401,13 @@ trait MuiComponents {
                       disabled: js.UndefOr[Boolean] = js.undefined,
                       /* Overrides the inline-styles of the icon element.*/
                       iconStyle: js.UndefOr[js.Any] = js.undefined,
-                      /* Used internally by `RadioButtonGroup`. Use the `labelPosition` property of `RadioButtonGroup` instead.
-                    Where the label will be placed next to the radio button.*/
-                      labelPosition: js.UndefOr[LeftRight] = js.undefined,
                       /* Overrides the inline-styles of the RadioButton element label.*/
                       labelStyle: js.UndefOr[js.Any] = js.undefined,
                       /* _ function for checked event.*/
                       onCheck: js.UndefOr[(ReactEventH, Boolean) => _] = js.undefined,
                       /* Override the inline-styles of the root element.*/
                       style: js.UndefOr[js.Any] = js.undefined,
+                      uncheckedIcon: js.UndefOr[ReactElement] = js.undefined,
                       /* The value of our radio button component.*/
                       value: js.UndefOr[String] = js.undefined,
                       /* The css class name of the root element.
@@ -1692,6 +1641,7 @@ trait MuiComponents {
                       hintText: js.UndefOr[ReactNode] = js.undefined,
                       /* Overrides the styles of the icon element.*/
                       iconStyle: js.UndefOr[js.Any] = js.undefined,
+                      id: js.UndefOr[String] = js.undefined,
                       /* Overrides the styles of label when the `SelectField` is inactive.*/
                       labelStyle: js.UndefOr[js.Any] = js.undefined,
                       /* _ function that is fired when the `SelectField` loses focus.*/
@@ -1770,38 +1720,9 @@ trait MuiComponents {
   }
 
 
-  def MuiTab(
-              key: js.UndefOr[String] = js.undefined,
-              ref: js.UndefOr[String] = js.undefined,
-              /* The css class name of the root element.*/
-              className: js.UndefOr[String] = js.undefined,
-              /* Sets the text value of the tab item to the string specified.*/
-              label: js.UndefOr[ReactNode] = js.undefined,
-              /* Fired when the active tab changes by touch or tap.
-            Use this event to specify any functionality when an active tab changes.
-            For example - we are using this to route to home when the third tab becomes active.
-            This function will always recieve the active tab as it\'s first argument.*/
-              onActive: js.UndefOr[ReactElement => _] = js.undefined,
-              /* This property is overriden by the Tabs component.*/
-              onTouchTap: js.UndefOr[ReactTouchEventH => _] = js.undefined,
-              /* Defines if the current tab is selected or not.
-            The Tabs component is responsible for setting this property.*/
-              selected: js.UndefOr[Boolean] = js.undefined,
-              /* Override the inline-styles of the root element.*/
-              style: js.UndefOr[js.Any] = js.undefined,
-              /* If value prop passed to Tabs component, this value prop is also required.
-            It assigns a value to the tab so that it can be selected by the Tabs.*/
-              value: js.UndefOr[String] = js.undefined,
-              /* This property is overriden by the Tabs component.*/
-              width: js.UndefOr[String] = js.undefined)(children: ReactNode*): ReactElement = {
-    val props = FunctionMacro()
-    React.createElement(Mui.Tab, props, children: _*)
-  }
-
-
   def MuiTable(
                 key: js.UndefOr[String] = js.undefined,
-                ref: js.UndefOr[String] = js.undefined,
+                ref: js.UndefOr[TableM => _] = js.undefined,
                 /* Set to true to indicate that all rows should be selected.*/
                 allRowsSelected: js.UndefOr[Boolean] = js.undefined,
                 /* Override the inline-styles of the body's table element.*/
@@ -1827,15 +1748,15 @@ trait MuiComponents {
                 /* Called when a row cell is clicked.
               rowNumber is the row number and columnId is
               the column number or the column key.*/
-                onCellClick: js.UndefOr[(Int, Int) => _] = js.undefined,
+                onCellClick: js.UndefOr[(Int, Int | String, ReactEventH) => _] = js.undefined,
                 /* Called when a table cell is hovered.
               rowNumber is the row number of the hovered row
               and columnId is the column number or the column key of the cell.*/
-                onCellHover: js.UndefOr[(Int, Int) => _] = js.undefined,
+                onCellHover: js.UndefOr[(Int, Int | String, ReactEventH) => _] = js.undefined,
                 /* Called when a table cell is no longer hovered.
               rowNumber is the row number of the row and columnId
               is the column number or the column key of the cell.*/
-                onCellHoverExit: js.UndefOr[(Int, Int) => _] = js.undefined,
+                onCellHoverExit: js.UndefOr[(Int, Int | String, ReactEventH) => _] = js.undefined,
                 /* Called when a table row is hovered.
               rowNumber is the row number of the hovered row.*/
                 onRowHover: js.UndefOr[Int => _] = js.undefined,
@@ -1863,55 +1784,22 @@ trait MuiComponents {
   def MuiTableBody(
                     key: js.UndefOr[String] = js.undefined,
                     ref: js.UndefOr[String] = js.undefined,
-                    /* Set to true to indicate that all rows should be selected.*/
-                    allRowsSelected: js.UndefOr[Boolean] = js.undefined,
-                    /* The css class name of the root element.*/
                     className: js.UndefOr[String] = js.undefined,
                     /* Controls whether or not to deselect all selected
-                  rows after clicking outside the table.*/
+                    rows after clicking outside the table.*/
                     deselectOnClickaway: js.UndefOr[Boolean] = js.undefined,
                     /* Controls the display of the row checkbox. The default value is true.*/
                     displayRowCheckbox: js.UndefOr[Boolean] = js.undefined,
-                    /* If true, multiple table rows can be selected.
-                  CTRL/CMD+Click and SHIFT+Click are valid actions.
-                  The default value is false.*/
-                    multiSelectable: js.UndefOr[Boolean] = js.undefined,
-                    /* _ function for when a cell is clicked.*/
-                    onCellClick: js.UndefOr[(Int, Int) => _] = js.undefined,
-                    /* Called when a table cell is hovered. rowNumber
-                  is the row number of the hovered row and columnId
-                  is the column number or the column key of the cell.*/
-                    onCellHover: js.UndefOr[(Int, Int) => _] = js.undefined,
-                    /* Called when a table cell is no longer hovered.
-                  rowNumber is the row number of the row and columnId
-                  is the column number or the column key of the cell.*/
-                    onCellHoverExit: js.UndefOr[(Int, Int) => _] = js.undefined,
-                    /* Called when a table row is hovered.
-                  rowNumber is the row number of the hovered row.*/
-                    onRowHover: js.UndefOr[Int => _] = js.undefined,
-                    /* Called when a table row is no longer
-                  hovered. rowNumber is the row number of the row
-                  that is no longer hovered.*/
-                    onRowHoverExit: js.UndefOr[Int => _] = js.undefined,
-                    /* Called when a row is selected. selectedRows is an
-                  array of all row selections. IF all rows have been selected,
-                  the string "all" will be returned instead to indicate that
-                  all rows have been selected.*/
-                    onRowSelection: js.UndefOr[String | js.Array[Int] => _] = js.undefined,
                     /* Controls whether or not the rows are pre-scanned to determine
-                  initial state. If your table has a large number of rows and
-                  you are experiencing a delay in rendering, turn off this property.*/
+                     initial state. If your table has a large number of rows and
+                      you are experiencing a delay in rendering, turn off this property.*/
                     preScanRows: js.UndefOr[Boolean] = js.undefined,
-                    /* If true, table rows can be selected. If multiple
-                  row selection is desired, enable multiSelectable.
-                  The default value is true.*/
-                    selectable: js.UndefOr[Boolean] = js.undefined,
                     /* If true, table rows will be highlighted when
-                  the cursor is hovering over the row. The default
-                  value is false.*/
+                       the cursor is hovering over the row. The default
+                    value is false.*/
                     showRowHover: js.UndefOr[Boolean] = js.undefined,
                     /* If true, every other table row starting
-                  with the first row will be striped. The default value is false.*/
+                    with the first row will be striped. The default value is false.*/
                     stripedRows: js.UndefOr[Boolean] = js.undefined,
                     /* Override the inline-styles of the root element.*/
                     style: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
@@ -1922,13 +1810,6 @@ trait MuiComponents {
   def MuiTableFooter(
                       key: js.UndefOr[String] = js.undefined,
                       ref: js.UndefOr[String] = js.undefined,
-                      /* Controls whether or not header rows should be adjusted
-                    for a checkbox column. If the select all checkbox is true,
-                    this property will not influence the number of columns.
-                    This is mainly useful for "super header" rows so that
-                    the checkbox column does not create an offset that needs
-                    to be accounted for manually.*/
-                      adjustForCheckbox: js.UndefOr[Boolean] = js.undefined,
                       /* The css class name of the root element.*/
                       className: js.UndefOr[String] = js.undefined,
                       /* Override the inline-styles of the root element.*/
@@ -1957,10 +1838,6 @@ trait MuiComponents {
                     If set to false, the button will not be interactable.
                     To hide the checkbox, set displaySelectAll to false.*/
                       enableSelectAll: js.UndefOr[Boolean] = js.undefined,
-                      /* _ when select all has been checked.*/
-                      onSelectAll: js.UndefOr[Boolean => _] = js.undefined,
-                      /* True when select all has been checked.*/
-                      selectAllSelected: js.UndefOr[Boolean] = js.undefined,
                       /* Override the inline-styles of the root element.*/
                       style: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
     val props = FunctionMacro()
@@ -1975,8 +1852,6 @@ trait MuiComponents {
                             /* Number to identify the header row. This property
                           is automatically populated when used with TableHeader.*/
                             columnNumber: js.UndefOr[Int] = js.undefined,
-                            /* _ function for click event.*/
-                            onClick: js.UndefOr[(ReactEventH, Int) => _] = js.undefined,
                             /* Override the inline-styles of the root element.*/
                             style: js.UndefOr[js.Any] = js.undefined,
                             /* The string to supply to the tooltip. If not
@@ -1998,26 +1873,7 @@ trait MuiComponents {
                    displayBorder: js.UndefOr[Boolean] = js.undefined,
                    /* Controls whether or not the row reponseds to hover events.*/
                    hoverable: js.UndefOr[Boolean] = js.undefined,
-                   /* Called when a row cell is clicked.
-                 rowNumber is the row number and columnId is
-                 the column number or the column key.*/
-                   onCellClick: js.UndefOr[(Int, Int) => _] = js.undefined,
-                   /* Called when a table cell is hovered.
-                 rowNumber is the row number of the hovered row
-                 and columnId is the column number or the column key of the cell.*/
-                   onCellHover: js.UndefOr[(Int, Int) => _] = js.undefined,
-                   /* Called when a table cell is no longer hovered.
-                 rowNumber is the row number of the row and columnId
-                 is the column number or the column key of the cell.*/
-                   onCellHoverExit: js.UndefOr[(Int, Int) => _] = js.undefined,
-                   /* Called when row is clicked.*/
-                   onRowClick: js.UndefOr[(ReactEventH, Int) => _] = js.undefined,
-                   /* Called when a table row is hovered.
-                 rowNumber is the row number of the hovered row.*/
-                   onRowHover: js.UndefOr[Int => _] = js.undefined,
-                   /* Called when a table row is no longer hovered.
-                 rowNumber is the row number of the row that is no longer hovered.*/
-                   onRowHoverExit: js.UndefOr[Int => _] = js.undefined,
+                   hovered: js.UndefOr[Boolean] = js.undefined,
                    /* Number to identify the row. This property is
                  automatically populated when used with the TableBody component.*/
                    rowNumber: js.UndefOr[Int] = js.undefined,
@@ -2041,17 +1897,6 @@ trait MuiComponents {
                          ref: js.UndefOr[String] = js.undefined,
                          /* The css class name of the root element.*/
                          className: js.UndefOr[String] = js.undefined,
-                         /* Number to identify the header row. This property
-                       is automatically populated when used with TableHeader.*/
-                         columnNumber: js.UndefOr[Int] = js.undefined,
-                         /* If true, this column responds to hover events.*/
-                         hoverable: js.UndefOr[Boolean] = js.undefined,
-                         /* _ function for click event.*/
-                         onClick: js.UndefOr[(ReactEventH, Int) => _] = js.undefined,
-                         /* _ function for hover event.*/
-                         onHover: js.UndefOr[(ReactEventH, Int) => _] = js.undefined,
-                         /* _ function for hover exit event.*/
-                         onHoverExit: js.UndefOr[(ReactEventH, Int) => _] = js.undefined,
                          /* Override the inline-styles of the root element.*/
                          style: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
     val props = FunctionMacro()
@@ -2088,19 +1933,44 @@ trait MuiComponents {
     React.createElement(Mui.Tabs, props, children: _*)
   }
 
+
+  def MuiTab(
+              key: js.UndefOr[String] = js.undefined,
+              ref: js.UndefOr[String] = js.undefined,
+              /* The css class name of the root element.*/
+              className: js.UndefOr[String] = js.undefined,
+              icon: js.UndefOr[ReactNode] = js.undefined,
+              /* Sets the text value of the tab item to the string specified.*/
+              label: js.UndefOr[ReactNode] = js.undefined,
+              /* Fired when the active tab changes by touch or tap.
+            Use this event to specify any functionality when an active tab changes.
+            For example - we are using this to route to home when the third tab becomes active.
+            This function will always recieve the active tab as it\'s first argument.*/
+              onActive: js.UndefOr[ReactElement => _] = js.undefined,
+              /* Override the inline-styles of the root element.*/
+              style: js.UndefOr[js.Any] = js.undefined,
+              /* If value prop passed to Tabs component, this value prop is also required.
+            It assigns a value to the tab so that it can be selected by the Tabs.*/
+              value: js.UndefOr[String] = js.undefined)(children: ReactNode*): ReactElement = {
+    val props = FunctionMacro()
+    React.createElement(Mui.Tab, props, children: _*)
+  }
+
   def MuiTextField(
                     key: js.UndefOr[String] = js.undefined,
                     ref: js.UndefOr[MuiTextFieldM => Unit] = js.undefined,
                     /* The css class name of the root element.*/
                     className: js.UndefOr[String] = js.undefined,
                     /* The text string to use for the default value.*/
-                    defaultValue: js.UndefOr[String] = js.undefined,
+                    defaultValue: js.UndefOr[js.Any] = js.undefined,
                     /* Disables the text field if set to true.*/
                     disabled: js.UndefOr[Boolean] = js.undefined,
                     /* The style object to use to override error styles.*/
                     errorStyle: js.UndefOr[js.Any] = js.undefined,
                     /* The error content to display.*/
                     errorText: js.UndefOr[ReactNode] = js.undefined,
+                    floatingLabelFixed: js.UndefOr[Boolean] = js.undefined,
+                    floatingLabelFocusStyle: js.UndefOr[js.Any] = js.undefined,
                     /* The style object to use to override floating label styles.*/
                     floatingLabelStyle: js.UndefOr[js.Any] = js.undefined,
                     /* The content to use for the floating label element.*/
@@ -2118,12 +1988,11 @@ trait MuiComponents {
                     /* If true, a textarea element will be rendered.
                   The textarea also grows and shrinks according to the number of lines.*/
                     multiLine: js.UndefOr[Boolean] = js.undefined,
+                    name: js.UndefOr[String] = js.undefined,
                     /* _ function that is fired when the textfield loses focus.*/
                     onBlur: js.UndefOr[ReactEventI => _] = js.undefined,
                     /* _ function that is fired when the textfield's value changes.*/
                     onChange: js.UndefOr[ReactEventI => _] = js.undefined,
-                    /* The function to call when the user presses the Enter key.*/
-                    onEnterKeyDown: js.UndefOr[ReactKeyboardEventI => _] = js.undefined,
                     /* _ function that is fired when the textfield gains focus.*/
                     onFocus: js.UndefOr[ReactFocusEventH => _] = js.undefined,
                     /* _ function fired when key is pressed down.*/
@@ -2149,7 +2018,7 @@ trait MuiComponents {
                     /* Override the inline-styles of the TextField's underline element.*/
                     underlineStyle: js.UndefOr[js.Any] = js.undefined,
                     /* The value of the text field.*/
-                    value: js.UndefOr[String] = js.undefined)(children: ReactNode*): ReactElement = {
+                    value: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
     val props = FunctionMacro()
     React.createElement(Mui.TextField, props, children: _*)
   }
@@ -2199,16 +2068,94 @@ trait MuiComponents {
     React.createElement(Mui.Slider, props)
   }
 
+
+  def MuiStepper(
+                  key: js.UndefOr[String] = js.undefined,
+                  ref: js.UndefOr[String] = js.undefined,
+                  linear: js.UndefOr[Boolean] = js.undefined,
+                  orientation: js.UndefOr[HorizontalVeritcal] = js.undefined,
+                  /* Override the inline-styles of the root element.*/
+                  style: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
+    val props = FunctionMacro()
+    React.createElement(Mui.Stepper, props, children: _*)
+  }
+
+  def MuiStep(
+               key: js.UndefOr[String] = js.undefined,
+               ref: js.UndefOr[String] = js.undefined,
+               active: js.UndefOr[Boolean] = js.undefined,
+               completed: js.UndefOr[Boolean] = js.undefined,
+               disabled: js.UndefOr[Boolean] = js.undefined,
+               /* Override the inline-styles of the root element.*/
+               style: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
+    val props = FunctionMacro()
+    React.createElement(Mui.Step, props, children: _*)
+  }
+
+
+  def MuiStepLabel(
+                    key: js.UndefOr[String] = js.undefined,
+                    ref: js.UndefOr[String] = js.undefined,
+                    active: js.UndefOr[Boolean] = js.undefined,
+                    completed: js.UndefOr[Boolean] = js.undefined,
+                    disabled: js.UndefOr[Boolean] = js.undefined,
+                    icon: js.UndefOr[ReactNode] = js.undefined,
+                    /* Override the inline-styles of the root element.*/
+                    style: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
+    val props = FunctionMacro()
+    React.createElement(Mui.StepLabel, props, children: _*)
+  }
+
+  def MuiStepButton(
+                     key: js.UndefOr[String] = js.undefined,
+                     ref: js.UndefOr[String] = js.undefined,
+                     active: js.UndefOr[Boolean] = js.undefined,
+                     completed: js.UndefOr[Boolean] = js.undefined,
+                     disabled: js.UndefOr[Boolean] = js.undefined,
+                     icon: js.UndefOr[ReactNode] = js.undefined,
+                     onMouseEnter: js.UndefOr[ReactMouseEventH => _] = js.undefined,
+                     onMouseLeave: js.UndefOr[ReactMouseEventH => _] = js.undefined,
+                     onTouchStart: js.UndefOr[ReactMouseEventH => _] = js.undefined,
+                     /* Override the inline-styles of the root element.*/
+                     style: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
+    val props = FunctionMacro()
+    React.createElement(Mui.StepButton, props, children: _*)
+  }
+
+  def MuiStepContent(
+                      key: js.UndefOr[String] = js.undefined,
+                      ref: js.UndefOr[String] = js.undefined,
+                      active: js.UndefOr[Boolean] = js.undefined,
+                      /* Override the inline-styles of the root element.*/
+                      style: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
+    val props = FunctionMacro()
+    React.createElement(Mui.StepContent, props, children: _*)
+  }
+
+  def MuiSubheader(
+                    key: js.UndefOr[String] = js.undefined,
+                    ref: js.UndefOr[String] = js.undefined,
+                    inset: js.UndefOr[Boolean] = js.undefined,
+                    /* Override the inline-styles of the root element.*/
+                    style: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
+    val props = FunctionMacro()
+    React.createElement(Mui.Subheader, props, children: _*)
+  }
+
+
   def MuiTimePicker(
                      key: js.UndefOr[String] = js.undefined,
                      ref: js.UndefOr[MuiTimePickerM => Unit] = js.undefined,
                      /* If true, automatically accept and close the picker on set minutes.*/
                      autoOk: js.UndefOr[Boolean] = js.undefined,
+                     cancelLabel: js.UndefOr[ReactNode] = js.undefined,
                      /* This is the initial time value of the component.*/
                      defaultTime: js.UndefOr[js.Date] = js.undefined,
+                     disabled: js.UndefOr[Boolean] = js.undefined,
                      /* Tells the component to display the picker in
                    ampm (12hr) format or 24hr format.*/
                      format: js.UndefOr[Ampm_24hr] = js.undefined,
+                     okLabel: js.UndefOr[ReactNode] = js.undefined,
                      /* _ function that is fired when the time
                    value changes. The time value is passed in a Date
                    Object.Since there is no particular event associated
@@ -2240,9 +2187,6 @@ trait MuiComponents {
                      /* The text string to use for the default value.
                      (Passed on to TextField)*/
                      defaultValue: js.UndefOr[String] = js.undefined,
-                     /* Disables the text field if set to true.
-                     (Passed on to TextField)*/
-                     disabled: js.UndefOr[Boolean] = js.undefined,
                      /* The style object to use to override error styles.
                      (Passed on to TextField)*/
                      errorStyle: js.UndefOr[js.Any] = js.undefined,
@@ -2283,17 +2227,6 @@ trait MuiComponents {
                      /* _ function fired when key is pressed down.
                      (Passed on to TextField)*/
                      onKeyDown: js.UndefOr[ReactKeyboardEventH => _] = js.undefined,
-                     /* Number of rows to display when multiLine option is set to true.
-                     (Passed on to TextField)*/
-                     rows: js.UndefOr[Int] = js.undefined,
-                     /* Maximum number of rows to display when
-                   multiLine option is set to true.
-                     (Passed on to TextField)*/
-                     rowsMax: js.UndefOr[Int] = js.undefined,
-                     /* Specifies the type of input to display
-                   such as "password" or "text".
-                     (Passed on to TextField)*/
-                     `type`: js.UndefOr[String] = js.undefined,
                      /* Override the inline-styles of the
                    TextField's underline element when disabled.
                      (Passed on to TextField)*/
