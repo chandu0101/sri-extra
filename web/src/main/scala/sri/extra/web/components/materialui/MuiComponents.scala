@@ -85,6 +85,7 @@ trait MuiComponents {
                        hintText: js.UndefOr[String] = js.undefined,
                        /* Override style for list.*/
                        listStyle: js.UndefOr[js.Any] = js.undefined,
+                       textFieldStyle: js.UndefOr[js.Any] = js.undefined,
                        /* Delay for closing time of the menu.*/
                        menuCloseDelay: js.UndefOr[Double] = js.undefined,
                        /* Props to be passed to menu.*/
@@ -1721,7 +1722,7 @@ trait MuiComponents {
                    key: js.UndefOr[String] = js.undefined,
                    ref: js.UndefOr[MuiSnackbarM => Unit] = js.undefined,
                    /* The label for the action on the snackbar.*/
-                   action: js.UndefOr[String] = js.undefined,
+                   action: js.UndefOr[ReactNode] = js.undefined,
                    /* The number of milliseconds to wait before automatically dismissing.
                  If no value is specified the snackbar will dismiss normally.
                  If a value is provided the snackbar can still be dismissed normally.
