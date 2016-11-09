@@ -20,10 +20,8 @@ object MuiRootComponent {
     }
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
+  js.constructorOf[Component].childContextTypes = muiContextTypes
 
-  ctor.childContextTypes = muiContextTypes
-
-  def apply(theme: MuiRawTheme = Mui.Styles.LightRawTheme, key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, _] = null)(children: ReactNode) = createElementWithChildren(ctor, theme, key = key, ref = ref)(children)
+  def apply(theme: MuiRawTheme = Mui.Styles.LightRawTheme, key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, Unit] = null)(children: ReactNode) = makeElementWithChildren[Component](theme, key = key, ref = ref)(children)
 
 }

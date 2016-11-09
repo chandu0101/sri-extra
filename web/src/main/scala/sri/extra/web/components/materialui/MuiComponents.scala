@@ -1583,6 +1583,7 @@ trait MuiComponents {
                        /* Override the inline-styles of the button's label element.*/
                        labelStyle: js.UndefOr[js.Any] = js.undefined,
                        buttonStyle: js.UndefOr[js.Any] = js.undefined,
+                       overlayStyle: js.UndefOr[js.Any] = js.undefined,
                        /* Enables use of `href` property to provide a URL to link to if set to true.*/
                        linkButton: js.UndefOr[Boolean] = js.undefined,
                        /* _ function for when the mouse is pressed down inside this element.*/
@@ -1985,6 +1986,7 @@ trait MuiComponents {
                onChange: js.UndefOr[(String, ReactEventH, ReactElement) => _] = js.undefined,
                /* Override the inline-styles of the root element.*/
                style: js.UndefOr[js.Any] = js.undefined,
+               tabTemplateStyle: js.UndefOr[js.Any] = js.undefined,
                /* Override the inline-styles of the tab-labels container.*/
                tabItemContainerStyle: js.UndefOr[js.Any] = js.undefined,
                /* Override the default tab template used to wrap the content of each tab element.*/
