@@ -13,6 +13,8 @@ object Mui extends js.Object {
   val Avatar: ReactClass = js.native
   val AutoComplete: ReactClass = js.native
   val Badge: ReactClass = js.native
+  val BottomNavigation: ReactClass = js.native
+  val BottomNavigationItem: ReactClass = js.native
   val BeforeAfterWrapper: ReactClass = js.native
   val Card: ReactClass = js.native
   val Chip: ReactClass = js.native

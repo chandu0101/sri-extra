@@ -154,6 +154,29 @@ trait MuiComponents {
     React.createElement(Mui.Badge, props, children: _*)
   }
 
+  def MuiBottomNavigation(
+                key: js.UndefOr[String] = js.undefined,
+                ref: js.UndefOr[String] = js.undefined,
+                className: js.UndefOr[String] = js.undefined,
+                selectedIndex: js.UndefOr[Int] = js.undefined,
+                /* Override the inline-styles of the root element.*/
+                style: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
+    val props = FunctionMacro()
+    React.createElement(Mui.BottomNavigation, props, children: _*)
+  }
+
+  def MuiBottomNavigationItem(
+                key: js.UndefOr[String] = js.undefined,
+                ref: js.UndefOr[String] = js.undefined,
+                icon: js.UndefOr[ReactNode] = js.undefined,
+                label: js.UndefOr[ReactNode] = js.undefined,
+                onTouchTap: js.UndefOr[ReactEventH => Unit] = js.undefined,
+                /* Override the inline-styles of the root element.*/
+                style: js.UndefOr[js.Any] = js.undefined): ReactElement = {
+    val props = FunctionMacro()
+    React.createElement(Mui.BottomNavigationItem, props)
+  }
+
   def MuiBeforeAfterWrapper(
                              key: js.UndefOr[String] = js.undefined,
                              ref: js.UndefOr[String] = js.undefined,
@@ -1115,6 +1138,7 @@ trait MuiComponents {
   def MuiListItem(
                    key: js.UndefOr[String] = js.undefined,
                    ref: js.UndefOr[String] = js.undefined,
+                   open: js.UndefOr[Boolean] = js.undefined,
                    /* Generate a nested list indicator icon when
                  nested list items are detected. Set to false
                  if you do not want an indicator auto-generated.
