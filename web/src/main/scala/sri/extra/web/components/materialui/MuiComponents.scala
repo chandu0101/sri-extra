@@ -62,6 +62,7 @@ trait MuiComponents {
   def MuiAutoComplete(
                        key: js.UndefOr[String] = js.undefined,
                        ref: js.UndefOr[String] = js.undefined,
+                       popoverProps: js.UndefOr[js.Any] = js.undefined,
                        /* Location of the anchor for the auto complete.*/
                        anchorOrigin: js.UndefOr[Origin] = js.undefined,
                        /* Whether or not the auto complete is animated as it is toggled.*/
@@ -1581,6 +1582,7 @@ trait MuiComponents {
                        labelPosition: js.UndefOr[BeforeAfter] = js.undefined,
                        /* Override the inline-styles of the button's label element.*/
                        labelStyle: js.UndefOr[js.Any] = js.undefined,
+                       buttonStyle: js.UndefOr[js.Any] = js.undefined,
                        /* Enables use of `href` property to provide a URL to link to if set to true.*/
                        linkButton: js.UndefOr[Boolean] = js.undefined,
                        /* _ function for when the mouse is pressed down inside this element.*/
@@ -1756,6 +1758,7 @@ trait MuiComponents {
                    bodyStyle: js.UndefOr[js.Any] = js.undefined,
                    /* The css class name of the root element.*/
                    className: js.UndefOr[String] = js.undefined,
+                   contentStyle: js.UndefOr[js.Any] = js.undefined,
                    /* The message to be displayed.*/
                    message: ReactNode,
                    /* Fired when the action button is touchtapped.
@@ -2330,6 +2333,8 @@ trait MuiComponents {
                  onToggle: js.UndefOr[(ReactEventI, Boolean) => _] = js.undefined,
                  /* Override style of ripple.*/
                  rippleStyle: js.UndefOr[js.Any] = js.undefined,
+                 thumbSwitchedStyle: js.UndefOr[js.Any] = js.undefined,
+                 trackSwitchedStyle: js.UndefOr[js.Any] = js.undefined,
                  /* Override the inline-styles of the root element.*/
                  style: js.UndefOr[js.Any] = js.undefined,
                  /* Override style for thumb.*/

@@ -29,7 +29,7 @@
   "dependencies": {
     "highlight.js": "8.9.1",
     "history": "^3.0.0-2",
-    "material-ui": "^v0.15.4",
+    "material-ui": "^v0.16.0",
     "react": "^15.0.2",
     "react-dom": "^15.0.2",
     "react-tap-event-plugin": "^1.0.0"
