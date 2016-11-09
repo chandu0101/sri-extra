@@ -1444,7 +1444,7 @@ trait MuiComponents {
                       style: js.UndefOr[js.Any] = js.undefined,
                       uncheckedIcon: js.UndefOr[ReactElement] = js.undefined,
                       /* The value of our radio button component.*/
-                      value: js.UndefOr[String] = js.undefined,
+                      value: js.UndefOr[js.Any] = js.undefined,
                       /* The css class name of the root element.
                       (Passed on to EnhancedSwitch)*/
                       className: js.UndefOr[String] = js.undefined,
@@ -2061,6 +2061,7 @@ trait MuiComponents {
   def MuiSlider(
                  key: js.UndefOr[String] = js.undefined,
                  ref: js.UndefOr[String] = js.undefined,
+                 sliderStyle: js.UndefOr[js.Any] = js.undefined,
                  /* The default value of the slider.*/
                  defaultValue: js.UndefOr[Double] = js.undefined,
                  /* Describe the slider.*/
