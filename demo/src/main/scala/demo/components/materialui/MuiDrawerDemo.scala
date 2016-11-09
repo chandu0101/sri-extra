@@ -106,10 +106,8 @@ object MuiDrawerDemo {
 
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
 
   // EXAMPLE:END
 
-  def apply() = createElementNoProps(ctor)
+  def apply() = makeElement[Component]
 }

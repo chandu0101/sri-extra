@@ -25,7 +25,6 @@ object CodeHighlight {
     }
 
     @JSName("sComponentDidUpdate")
-    @ExposedJSMember
     override def componentDidUpdate(prevProps: => String, prevState: => Unit): Unit = {
       applySyntaxHighlight
     }
@@ -37,8 +36,7 @@ object CodeHighlight {
     }
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
 
-  def apply(code: String, key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, _] = null) = createElement(ctor, code, key = key, ref = ref)
+  def apply(code: String, key: js.UndefOr[String] = js.undefined, ref: js.Function1[Component, Unit] = null) = makeElement[Component](code, key = key, ref = ref)
 
 }

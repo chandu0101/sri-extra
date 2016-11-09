@@ -16,7 +16,6 @@ import scala.scalajs.js.{UndefOr => U, undefined => undefined}
 
 object MuiScreen {
 
-
   @ScalaJSDefined
   class Component extends ReactComponent[Props, Unit] {
     def render() = WithAsyncScript("assets/material_ui-bundle.js")(
@@ -24,11 +23,8 @@ object MuiScreen {
     )
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-
   case class Props(selectedRender: () => ReactElement)
 
-  def apply(selectedRender: () => ReactElement) = createElement(ctor, Props(selectedRender))
+  def apply(selectedRender: () => ReactElement) = makeElement[Component](Props(selectedRender))
 
 }

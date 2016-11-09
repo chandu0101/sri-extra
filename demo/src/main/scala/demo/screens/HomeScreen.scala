@@ -23,13 +23,13 @@ object HomeScreen {
     import dsl._
 
     val info = style(
-      alignItems := "center",
-      backgroundColor := "#eeeeee",
+      alignItems.center,
+      backgroundColor :=! "#eeeeee",
       display.flex,
-      flexDirection := "column",
-      fontSize := "18px",
-      fontWeight := "500",
-      paddingBottom := "45px",
+      flexDirection.column,
+      fontSize :=! "18px",
+      fontWeight._500,
+      paddingBottom :=! "45px",
       paddingTop(85.px))
 
     val infoContent = style(
@@ -37,8 +37,8 @@ object HomeScreen {
       fontSize(18.px))
 
     val infoLink = style(
-      color := "#ff4081",
-      padding := "0 5px",
+      color :=! "#ff4081",
+      padding :=! "0 5px",
       textDecoration := "none")
 
     val searchSection = style(
@@ -83,9 +83,7 @@ object HomeScreen {
     }
   }
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
 
-
-  def apply(key: U[String] = js.undefined, ref: Function1[Component, _] = null) = createElementNoProps(ctor, key = key, ref = ref)
+  def apply(key: U[String] = js.undefined, ref: Function1[Component, Unit] = null) = makeElementNoProps[Component](key = key, ref = ref)
 
 }

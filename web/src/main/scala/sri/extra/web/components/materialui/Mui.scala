@@ -15,6 +15,7 @@ object Mui extends js.Object {
   val Badge: ReactClass = js.native
   val BeforeAfterWrapper: ReactClass = js.native
   val Card: ReactClass = js.native
+  val Chip: ReactClass = js.native
   val CardActions: ReactClass = js.native
   val CardExpandable: ReactClass = js.native
   val CardHeader: ReactClass = js.native

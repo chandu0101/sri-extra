@@ -71,9 +71,5 @@ object WithAsyncScript {
 
   case class Props(scripts: Set[String], children: () => ReactElement)
 
-
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-
-  def apply(scripts: String*)(children: () => ReactElement) = createElement(ctor, Props(scripts.toSet, children))
+  def apply(scripts: String*)(children: () => ReactElement) = makeElement[Component](Props(scripts.toSet, children))
 }

@@ -25,6 +25,10 @@ trait MuiComponents {
                  /* Similiar to the iconClassNameLeft prop except that
                it applies to the icon displayed on the right of the app bar.*/
                  iconClassNameRight: js.UndefOr[String] = js.undefined,
+                 /**
+                   * Override the inline-styles of the element displayed on the left side of the app bar.
+                   */
+                 iconStyleLeft: js.UndefOr[js.Any] = js.undefined,
                  /* The custom element to be displayed on the left side of the
                app bar such as an SvgIcon.*/
                  iconElementLeft: js.UndefOr[ReactElement] = js.undefined,
@@ -64,6 +68,7 @@ trait MuiComponents {
                        animated: js.UndefOr[Boolean] = js.undefined,
                        /* Array of strings or nodes used to populate the list.*/
                        dataSource: js.UndefOr[js.Array[String] | js.Array[MuiAutoCompleteOption]] = js.undefined,
+                       dataSourceConfig: js.UndefOr[MuiAutoCompleteOption] = js.undefined,
                        /* Disables focus ripple when true.*/
                        disableFocusRipple: js.UndefOr[Boolean] = js.undefined,
                        /* Override style prop for error.*/
@@ -186,6 +191,28 @@ trait MuiComponents {
     val props = FunctionMacro()
 
     React.createElement(Mui.Card, props, children: _*)
+  }
+
+  def MuiChip(
+               key: js.UndefOr[String] = js.undefined,
+               ref: js.UndefOr[String] = js.undefined,
+               /* Override the background color of the chip.*/
+               backgroundColor: js.UndefOr[String] = js.undefined,
+               /* CSS className of the root element.*/
+               className: js.UndefOr[String] = js.undefined,
+               /* Override the label color.*/
+               labelColor: js.UndefOr[String] = js.undefined,
+               /* Override the inline-styles of the label.*/
+               labelStyle: js.UndefOr[String] = js.undefined,
+               /* Callback function fired when the delete icon is clicked. If set, the delete icon will be shown.*/
+               onRequestDelete: js.UndefOr[ReactEventH => _] = js.undefined,
+               /* Callback function fired when the Chip element is touch-tapped.*/
+               onTouchTap: js.UndefOr[ReactEventH => _] = js.undefined,
+               /* Override the inline-styles of the root element.*/
+               style: js.UndefOr[js.Any] = js.undefined)(children: ReactNode*): ReactElement = {
+    val props = FunctionMacro()
+
+    React.createElement(Mui.Chip, props, children: _*)
   }
 
   def MuiCardActions(
@@ -444,6 +471,10 @@ trait MuiComponents {
                    if it's supported by your environment.
                    https:github.com/andyearnshaw/Intl.js is a good polyfill.*/
                      locale: js.UndefOr[String] = js.undefined,
+                     /**
+                     * The css class name of the root element.
+                     */
+                     className: js.UndefOr[String] = js.undefined,
                      /* The ending of a range of valid dates. The range includes the endDate.
                    The default value is current date + 100 years.*/
                      maxDate: js.UndefOr[js.Date] = js.undefined,
@@ -498,6 +529,8 @@ trait MuiComponents {
                      /* Override the inline-styles of the TextField's hint text element.
                      (Passed on to TextField)*/
                      hintStyle: js.UndefOr[js.Any] = js.undefined,
+                     /* Override the inline-styles of DatePickerDialog's Container element.*/
+                     dialogContainerStyle: js.UndefOr[js.Any] = js.undefined,
                      /* The hint content to display.
                      (Passed on to TextField)*/
                      hintText: js.UndefOr[ReactNode] = js.undefined,
@@ -610,6 +643,7 @@ trait MuiComponents {
   def MuiDropDownMenu(
                        key: js.UndefOr[String] = js.undefined,
                        ref: js.UndefOr[String] = js.undefined,
+                       animated: js.UndefOr[Boolean] = js.undefined,
                        /* The width will automatically be set according to the items inside the menu.
                      To control this width in css instead, set this prop to false.*/
                        autoWidth: js.UndefOr[Boolean] = js.undefined,
@@ -990,6 +1024,7 @@ trait MuiComponents {
   def MuiIconMenu(
                    key: js.UndefOr[String] = js.undefined,
                    ref: js.UndefOr[String] = js.undefined,
+                   animated: js.UndefOr[Boolean] = js.undefined,
                    /* This is the point on the icon where the menu
                  targetOrigin will stick to.
                  Options:
@@ -1625,6 +1660,7 @@ trait MuiComponents {
                       autoWidth: js.UndefOr[Boolean] = js.undefined,
                       /* Disables the select field if set to true.*/
                       disabled: js.UndefOr[Boolean] = js.undefined,
+                      floatingLabelFixed: js.UndefOr[Boolean] = js.undefined,
                       /* The style object to use to override error styles.*/
                       errorStyle: js.UndefOr[js.Any] = js.undefined,
                       /* The error content to display.*/
@@ -1650,8 +1686,6 @@ trait MuiComponents {
                       onChange: js.UndefOr[(ReactEventI, Int, js.Any) => _] = js.undefined,
                       /* _ function that is fired when the `SelectField` gains focus.*/
                       onFocus: js.UndefOr[ReactFocusEventH => _] = js.undefined,
-                      /* The style object to use to override the `DropDownMenu`.*/
-                      selectFieldRoot: js.UndefOr[js.Any] = js.undefined,
                       /* Override the inline-styles of the root element.*/
                       style: js.UndefOr[js.Any] = js.undefined,
                       /* Override the inline-styles of the underline element when disabled.*/
@@ -2152,6 +2186,8 @@ trait MuiComponents {
                      /* This is the initial time value of the component.*/
                      defaultTime: js.UndefOr[js.Date] = js.undefined,
                      disabled: js.UndefOr[Boolean] = js.undefined,
+                     dialogBodyStyle: js.UndefOr[js.Any] = js.undefined,
+                     dialogStyle: js.UndefOr[js.Any] = js.undefined,
                      /* Tells the component to display the picker in
                    ampm (12hr) format or 24hr format.*/
                      format: js.UndefOr[Ampm_24hr] = js.undefined,

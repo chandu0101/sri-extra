@@ -54,11 +54,7 @@ object LeftNav {
 
   case class Props(menus: List[LeftRoute])
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
+  js.constructorOf[Component].contextTypes = sri.web.router.routerContextTypes
 
-
-  ctor.contextTypes = sri.web.router.routerContextTypes
-
-
-  def apply(menus: List[LeftRoute]) = createElement(ctor, Props(menus))
+  def apply(menus: List[LeftRoute]) = makeElement[Component](Props(menus))
 }

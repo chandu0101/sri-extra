@@ -63,11 +63,9 @@ object ComponentGridItem {
   }
 
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  ctor.contextTypes = sri.web.router.routerContextTypes
+  js.constructorOf[Component].contextTypes = sri.web.router.routerContextTypes
 
   case class Props(heading: String, route: WebStaticPage, img: String)
 
-  def apply(heading: String, route: WebStaticPage, img: String, key: U[String] = js.undefined) = createElement(ctor, Props(heading, route, img), key = key)
+  def apply(heading: String, route: WebStaticPage, img: String, key: U[String] = js.undefined) = makeElement[Component](Props(heading, route, img), key = key)
 }

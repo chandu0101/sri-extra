@@ -58,9 +58,7 @@ object ComponentCredits {
 
   case class Props(filePath: String)
 
-  val ctor = getTypedConstructor(js.constructorOf[Component], classOf[Component])
-
-  def apply(filePath: String, key: UndefOr[String] = js.undefined, ref: Function1[Component, _] = null) = createElement(ctor, Props(filePath), key = key, ref = ref)
+  def apply(filePath: String, key: UndefOr[String] = js.undefined, ref: Function1[Component, Unit] = null) = makeElement[Component](Props(filePath), key = key, ref = ref)
 
 
 }

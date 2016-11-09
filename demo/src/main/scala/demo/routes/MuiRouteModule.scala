@@ -21,6 +21,8 @@ object MuiRouteModule extends WebRouterModuleConfig("materialui") {
 
   object CardPage extends WebStaticPage
 
+  object ChipPage extends WebStaticPage
+
   object TabsPage extends WebStaticPage
 
   object ButtonsPage extends WebStaticPage
@@ -69,6 +71,7 @@ object MuiRouteModule extends WebRouterModuleConfig("materialui") {
     LeftRoute(name = "Avatar", page = AvatarPage, component = () => MuiAvatarDemo()),
     LeftRoute(name = "Badge", page = BadgePage, component = () => MuiBadgeDemo()),
     LeftRoute(name = "Card", page = CardPage, component = () => MuiCardDemo()),
+    LeftRoute(name = "Chip", page = ChipPage, component = () => MuiChipDemo()),
     LeftRoute(name = "Buttons", page = ButtonsPage, component = () => MuiButtonsDemo()),
     LeftRoute(name = "DatePicker", page = DatePickerPage, component = () => MuiDatePickerDemo()),
     LeftRoute(name = "Dialog", page = DialogPage, component = () => MuiDialogDemo()),

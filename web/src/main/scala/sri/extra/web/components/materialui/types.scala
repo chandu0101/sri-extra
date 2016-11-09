@@ -4,6 +4,7 @@ import chandu0101.macros.tojs.JSMacro
 import sri.core.ReactNode
 
 import scala.scalajs.js
+import scala.scalajs.js.annotation.ScalaJSDefined
 
 class Vertical(val value: String) extends AnyVal
 
@@ -173,7 +174,7 @@ class MuiToggleM extends js.Object {
 }
 
 
-@js.native
+@ScalaJSDefined
 trait MuiAutoCompleteOption extends js.Object {
 
   val value: ReactNode
