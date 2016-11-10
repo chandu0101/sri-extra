@@ -9,7 +9,8 @@ import sri.web.vdom.htmltagsNoInline._
 
 import scala.scalajs.js.{UndefOr => U}
 import scalacss.Defaults._
-import scalacss.mutable.StyleSheet.Inline
+import scalacss.internal.mutable.StyleSheet.Inline
+
 
 object MuiSwitchesDemo {
 

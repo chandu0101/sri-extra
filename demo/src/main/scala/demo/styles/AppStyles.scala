@@ -4,10 +4,8 @@ package styles
 import demo.components.materialui._
 import demo.components._
 import demo.screens.HomeScreen
-import sri.scalacss.Defaults._
-
 import scalacss.Defaults._
-import scalacss.mutable.GlobalRegistry
+import scalacss.internal.mutable.GlobalRegistry
 
 object AppStyles {
 

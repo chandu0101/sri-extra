@@ -9,10 +9,10 @@ import Dependencies._
 lazy val SriExtra = DefProject(".", "root")
   .aggregate(universal, web, mobile, demo, macros)
   .configure(addCommandAliases(
-  "wt" -> "; test:compile ; web/test",
-  "tt" -> "; test:compile ; test/test",
-  "T" -> "; clean ;t",
-  "TT" -> ";+clean ;tt"))
+    "wt" -> "; test:compile ; web/test",
+    "tt" -> "; test:compile ; test/test",
+    "T" -> "; clean ;t",
+    "TT" -> ";+clean ;tt"))
   .settings(preventPublication)
 
 lazy val universal = DefProject("universal")
@@ -41,8 +41,8 @@ lazy val macros = DefProject("macros").settings(
   scalacOptions += "-language:experimental.macros",
   libraryDependencies ++= Seq(
     "org.scala-lang" % "scala-reflect" % Version.scala211,
-    "org.scala-lang" % "scala-compiler" % Version.scala211 % Provided)
-)
+    "org.scala-lang" % "scala-compiler" % Version.scala211 % Provided))
+  .settings(preventPublication)
 
 
 // workaround http://stackoverflow.com/questions/20931217/deprecation-and-feature-warnings-for-sbt-project-definition-files
